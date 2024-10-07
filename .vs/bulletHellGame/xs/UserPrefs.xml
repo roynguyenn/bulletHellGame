@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{20B8B05C-41F1-8138-9B40-D9710A0C1DCD}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SpawnerScript.cs">
+    <Files>
+      <File FileName="Assets/SpawnerScript.cs" Line="25" Column="1" />
+      <File FileName="Assets/BulletScript.cs" Line="6" Column="2" />
+      <File FileName="Assets/movementScript.cs" Line="33" Column="11" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="bulletHellGame" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="SpawnerScript.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8614aff6-7f9a-42d9-8861-ff5df7789a47" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
