@@ -6,7 +6,9 @@ public class BulletScript : MonoBehaviour
 {
     public float movespeed = 5f;
     public float bulletLife = 8f;
+    public Vector3 bulletDirection = new Vector3(0,0,0);
     private float timer = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,6 @@ public class BulletScript : MonoBehaviour
             timer = 0f;
         }
 
-        transform.position += transform.right * movespeed * Time.deltaTime;
+        transform.position += movespeed * Time.deltaTime * bulletDirection;
     }
 }
