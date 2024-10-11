@@ -1,15 +1,17 @@
 ﻿<Properties StartupConfiguration="{20B8B05C-41F1-8138-9B40-D9710A0C1DCD}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/movementScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BulletScript.cs">
     <Files>
-      <File FileName="Assets/SpawnerScript.cs" Line="25" Column="1" />
-      <File FileName="Assets/BulletScript.cs" />
+      <File FileName="Assets/SpawnerScript.cs" Line="73" Column="53" />
+      <File FileName="Assets/BulletScript.cs" Line="42" Column="50" />
       <File FileName="Assets/movementScript.cs" Line="33" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="bulletHellGame" expanded="True">
-            <Node name="Assets" expanded="True" selected="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="BulletScript.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
