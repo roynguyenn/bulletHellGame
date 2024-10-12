@@ -6,7 +6,9 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     private double _time = 0;
-    private double _period = 1;
+    private double _period = 0.5;
+    private int _maxEnemiesToSpawn = 5;
+    private double _spawnChance = 0.3;
 
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
 
@@ -57,46 +59,40 @@ public class SpawnerManager : MonoBehaviour
             return Vector3.zero;
 
         Vector2 spriteSize = spriteRenderer.size;
-        float padding = 2.0f;
-
-        float xOffset = (spriteSize.x / 2) + padding;
-        float yOffset = (spriteSize.y / 2) + padding;
+        float xOffset = spriteSize.x / 2;
+        float yOffset = spriteSize.y / 2;
+        float padding = 1.0f;
 
         Vector3 spawnPosition;
-        int side = UnityEngine.Random.Range(0, 4);
+        Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-        switch (side)
-        {
-            case 0:
-                spawnPosition = new Vector3(-camWidth / 2 - xOffset, UnityEngine.Random.Range(-yOffset / 2, yOffset / 2), 0);
-                break;
-            case 1:
-                spawnPosition = new Vector3(camWidth / 2 + xOffset, UnityEngine.Random.Range(-yOffset / 2, yOffset / 2), 0);
-                break;
-            case 2:
-                spawnPosition = new Vector3(UnityEngine.Random.Range(-xOffset / 2, xOffset / 2), camHeight / 2 + yOffset, 0);
-                break;
-            case 3:
-                spawnPosition = new Vector3(UnityEngine.Random.Range(-xOffset / 2, xOffset / 2), -camHeight / 2 - yOffset, 0);
-                break;
-            default:
-                spawnPosition = Vector3.zero;
-                break;
-        }
+        Debug.Log(camHeight + " " + camWidth + " " + xOffset + " " + yOffset + " " + padding);
+        float spawnDistance = Mathf.Sqrt(Mathf.Pow(camWidth / 2, 2) + Mathf.Pow(camHeight / 2, 2)) + Mathf.Max(xOffset, yOffset) + padding;
+        float randomAngle = UnityEngine.Random.Range(0f, 2 * Mathf.PI);
+
+        spawnPosition = playerPosition + new Vector3(Mathf.Cos(randomAngle) * spawnDistance, Mathf.Sin(randomAngle) * spawnDistance, 0);
 
         return spawnPosition;
     }
+
 
     void Update()
     {
         if (_time > _period)
         {
             _time = 0;
-            GameObject randomEnemyPrefab = PickRandomEnemyPrefab();
-            if (randomEnemyPrefab != null)
+            if (UnityEngine.Random.value < _spawnChance)
             {
-                GameObject newEnemy = CreateEnemyInstance(randomEnemyPrefab);
-                Debug.Log($"Spawned enemy: {newEnemy.GetComponent<Enemy>().Name}");
+                int enemiesToSpawn = UnityEngine.Random.Range(1, _maxEnemiesToSpawn + 1);
+                for (int i = 0; i < enemiesToSpawn; i++)
+                {
+                    GameObject randomEnemyPrefab = PickRandomEnemyPrefab();
+                    if (randomEnemyPrefab != null)
+                    {
+                        GameObject newEnemy = CreateEnemyInstance(randomEnemyPrefab);
+                        Debug.Log($"Spawned enemy: {newEnemy.GetComponent<Enemy>().Name}");
+                    }
+                }
             }
         }
         _time += Time.deltaTime;

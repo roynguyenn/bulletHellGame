@@ -29,7 +29,7 @@ public class BasicEnemy : Enemy
 		}
 
 		_existenceTime += Time.deltaTime;
-		if (_existenceTime >= 5f)
+		if (_existenceTime >= 5)
 		{
 			Remove();
 		}
