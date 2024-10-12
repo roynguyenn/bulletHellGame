@@ -35,6 +35,9 @@ public class movementScript : MonoBehaviour
             movementVector += new Vector3(-1,0,0); 
             // transform.position += new Vector3(-1,0,0) * movespeed * Time.deltaTime;
         }
+        movementVector.Normalize();
         transform.position += movementVector * movespeed * Time.deltaTime;
+
     }
+
 }
