@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &83459456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -502,10 +502,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerType: 0
-  bullet: {fileID: 9118897671508165577, guid: 3c4a97756f99b459a973f103393c9291, type: 3}
+  bullet: {fileID: 5570593271798075562, guid: 06b9e8ab8bd314e168ea5b916a4298e9, type: 3}
   player: {fileID: 1258510762}
   bulletLife: 8
   bulletSpeed: 5
+  firingRate: 1
+  rotationSpeed: 0
+  rotate: 0
   spreadCount: 0
 --- !u!212 &819240940
 SpriteRenderer:
@@ -591,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1045827912
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -877,11 +880,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a0855d0bb504bb59f847f1b16bddd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerType: 2
-  bullet: {fileID: 5570593271798075562, guid: 06b9e8ab8bd314e168ea5b916a4298e9, type: 3}
+  spawnerType: 1
+  bullet: {fileID: 3310024689324595893, guid: a6f1ad09fb2d14358b47344aca8af567, type: 3}
   player: {fileID: 1258510762}
-  bulletLife: 8
+  bulletLife: 5
   bulletSpeed: 5
+  firingRate: 1
+  rotationSpeed: 0
+  rotate: 1
   spreadCount: 3
 --- !u!212 &1571124772
 SpriteRenderer:
@@ -980,11 +986,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a0855d0bb504bb59f847f1b16bddd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerType: 1
-  bullet: {fileID: 7093318098991503944, guid: fa6de7d19388341dbb3f9d8ba0865232, type: 3}
+  spawnerType: 0
+  bullet: {fileID: 3310024689324595893, guid: a6f1ad09fb2d14358b47344aca8af567, type: 3}
   player: {fileID: 1258510762}
   bulletLife: 8
-  bulletSpeed: 10
+  bulletSpeed: 5
+  firingRate: 1
+  rotationSpeed: 0
+  rotate: 0
   spreadCount: 0
 --- !u!212 &1641384096
 SpriteRenderer:

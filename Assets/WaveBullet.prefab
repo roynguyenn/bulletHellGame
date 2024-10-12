@@ -176,5 +176,5 @@ MonoBehaviour:
   bulletLife: 8
   bulletDirection: {x: 0, y: 0, z: 0}
   bounceCap: 0
-  amplitude: 0.2
-  frequency: 4
+  amplitude: 2
+  frequency: 20

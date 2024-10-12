@@ -5,13 +5,15 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
 
-    enum BulletTypes { Normal, Bounce, Wave }
+    enum BulletTypes { Normal, Bounce, Wave, Homing }
 
     // Variables for all bullet types
     [SerializeField] private BulletTypes bulletType;
+
+    public GameObject player;
+    public Vector3 bulletDirection = new Vector3(0, 0, 0);
     public float movespeed = 5f;
     public float bulletLife = 8f;
-    public Vector3 bulletDirection = new Vector3(0,0,0);
     private float timer = 0f;
 
     // Variables for Bounce type
@@ -22,10 +24,14 @@ public class BulletScript : MonoBehaviour
     public float amplitude;
     public float frequency;
 
+    // Variables for Homing Type
+    public float turnRate;
+    public Rigidbody2D rb;
+    public float homingWait;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -36,11 +42,13 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(gameObject);
             timer = 0f;
-        } else if(bulletType == BulletTypes.Bounce && bounceCount >= bounceCap)
+        }
+        else if(bulletType == BulletTypes.Bounce && bounceCount >= bounceCap)
         {
             Destroy(gameObject);
             bounceCount = 0;
-        } else if(bulletType == BulletTypes.Wave)
+        }
+        else if(bulletType == BulletTypes.Wave)
         {
             Vector3 perpendicular = new Vector3(bulletDirection.y, -bulletDirection.x, 0);
             Vector3 moveY = perpendicular * Mathf.Sin(Time.time * frequency) * amplitude;
@@ -48,13 +56,32 @@ public class BulletScript : MonoBehaviour
             transform.position += (moveY + bulletDirection) * movespeed * Time.deltaTime;
             
         }
+        else if (bulletType == BulletTypes.Homing)
+        {
+            Vector3 playerPosition = player.transform.position;
+            Vector3 direction = (playerPosition - transform.position).normalized;
 
-        transform.position += movespeed * Time.deltaTime * bulletDirection;
+            float rotateAmount = -Vector3.Cross(direction, transform.right).z;
+            rb.angularVelocity = rotateAmount * turnRate;
+            rb.velocity = bulletDirection * movespeed;
+
+            if (timer >= homingWait)
+            {
+                rb.velocity = transform.right * movespeed;
+            }
+            
+        }
+
+        if (bulletType != BulletTypes.Homing)
+        {
+            transform.position += movespeed * Time.deltaTime * bulletDirection;
+        }
+        
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision");
+
         if (bulletType != BulletTypes.Bounce && collision.gameObject.tag != "Bullet")
         {
             Destroy(gameObject);

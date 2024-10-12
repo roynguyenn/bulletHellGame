@@ -100,10 +100,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 0
+  player: {fileID: 0}
+  bulletDirection: {x: 0, y: 0, z: 0}
   movespeed: 5
   bulletLife: 8
-  bulletDirection: {x: 0, y: 0, z: 0}
   bounceCap: 0
+  amplitude: 0
+  frequency: 0
+  turnRate: 1000
+  rb: {fileID: 0}
 --- !u!61 &8324915777582189777
 BoxCollider2D:
   m_ObjectHideFlags: 0

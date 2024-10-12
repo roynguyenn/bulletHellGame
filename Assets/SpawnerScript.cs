@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
-    enum SpawnerTypes { Rotate, Aim, Spread }
+    enum SpawnerTypes { Aim, Spread, }
 
     // Variables for any spawner type
     [SerializeField] private SpawnerTypes spawnerType;
     public GameObject bullet;
     public GameObject player;
     private GameObject spawnedBullet;
+
     public float bulletLife = 8f;
     public float bulletSpeed = 5f;
-    private float firingRate = 1f;
+    public float firingRate = 1f;
     private float timer = 0f;
+    public float rotationSpeed;
+
+    public bool rotate;
+    
 
     // Spread type variables
     public int spreadCount;
@@ -31,12 +36,13 @@ public class SpawnerScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (spawnerType == SpawnerTypes.Rotate)
+        if (rotate)
         {
-            transform.Rotate(0f, 0f, 1f);
+            transform.Rotate(0f, 0f, rotationSpeed);
             
         }
-        else if (spawnerType == SpawnerTypes.Aim)
+
+        if (spawnerType == SpawnerTypes.Aim)
         {
             Aim(player);
         }
@@ -63,16 +69,17 @@ public class SpawnerScript : MonoBehaviour
         spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
         spawnedBullet.GetComponent<BulletScript>().movespeed = bulletSpeed;
         spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
-        spawnedBullet.transform.rotation = transform.rotation;
         spawnedBullet.GetComponent<BulletScript>().bulletDirection = transform.right;
+        spawnedBullet.GetComponent<BulletScript>().player = player;
+        spawnedBullet.transform.rotation = transform.rotation;   
     }
 
     public void SpreadShot(int shotCount)
     {
 
         Vector3 originalDirection = transform.right;
-
-        Quaternion rotation = Quaternion.Euler(0, 0, 360f / shotCount);
+        float circleDeg = 360f;
+        Quaternion rotation = Quaternion.Euler(0, 0, circleDeg / shotCount);
         Vector3 rotatedVector = originalDirection;
         for (int i = 0; i < shotCount; i++)
         {
@@ -80,7 +87,7 @@ public class SpawnerScript : MonoBehaviour
             spawnedBullet.GetComponent<BulletScript>().movespeed = bulletSpeed;
             spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
             spawnedBullet.GetComponent<BulletScript>().bulletDirection = originalDirection;
-
+            spawnedBullet.GetComponent<BulletScript>().player = player;
             rotatedVector = rotation * originalDirection;
             originalDirection = rotatedVector;
         }
@@ -90,7 +97,6 @@ public class SpawnerScript : MonoBehaviour
     public void Aim(GameObject target)
     {
         Vector3 targetDirection = transform.position - target.transform.position;
-
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         float offset = 180f;
         transform.rotation = Quaternion.Euler(0, 0, angle + offset);
