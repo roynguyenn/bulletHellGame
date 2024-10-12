@@ -19,6 +19,7 @@ public class SpawnerScript : MonoBehaviour
     public float rotationSpeed;
 
     public bool rotate;
+
     
 
     // Spread type variables
@@ -87,6 +88,7 @@ public class SpawnerScript : MonoBehaviour
             spawnedBullet.GetComponent<BulletScript>().movespeed = bulletSpeed;
             spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
             spawnedBullet.GetComponent<BulletScript>().bulletDirection = originalDirection;
+            // Can't assign scene object to prefab, so need to instantiate during runtime
             spawnedBullet.GetComponent<BulletScript>().player = player;
             rotatedVector = rotation * originalDirection;
             originalDirection = rotatedVector;
