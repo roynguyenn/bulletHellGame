@@ -74,8 +74,7 @@ public class SpawnerManager : MonoBehaviour
 
         return spawnPosition;
     }
-
-
+    
     void Update()
     {
         if (_time > _period)
