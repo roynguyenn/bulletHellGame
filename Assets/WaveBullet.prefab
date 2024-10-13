@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -172,9 +172,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 2
+  player: {fileID: 0}
+  bulletDirection: {x: 0, y: 0, z: 0}
   movespeed: 5
   bulletLife: 8
-  bulletDirection: {x: 0, y: 0, z: 0}
   bounceCap: 0
   amplitude: 2
   frequency: 20
+  turnRate: 0
+  rb: {fileID: 0}
+  homingWait: 0
