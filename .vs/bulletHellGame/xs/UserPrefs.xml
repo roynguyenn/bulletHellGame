@@ -1,17 +1,19 @@
 ﻿<Properties StartupConfiguration="{20B8B05C-41F1-8138-9B40-D9710A0C1DCD}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BulletScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/playerMechanics.cs">
     <Files>
-      <File FileName="Assets/SpawnerScript.cs" Line="73" Column="53" />
-      <File FileName="Assets/BulletScript.cs" Line="42" Column="50" />
-      <File FileName="Assets/movementScript.cs" Line="33" Column="11" />
+      <File FileName="Assets/SpawnerScript.cs" Line="32" Column="7" />
+      <File FileName="Assets/Enemies/Enemy.cs" />
+      <File FileName="Assets/CameraFollow.cs" />
+      <File FileName="Assets/Enemies/SpawnerManager.cs" />
+      <File FileName="Assets/Enemies/Types/BasicEnemy.cs" />
+      <File FileName="Assets/playerMechanics.cs" Line="12" Column="11" />
+      <File FileName="Assets/healthBarHearts.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="bulletHellGame" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="BulletScript.cs" selected="True" />
-            </Node>
+            <Node name="Assets" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -19,7 +21,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d2500029-b08f-49eb-87d3-fadb6da2c2c0" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8f38923d-f255-4746-919b-74acc4169ab8" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

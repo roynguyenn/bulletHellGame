@@ -144,7 +144,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -179,3 +179,6 @@ MonoBehaviour:
   bounceCap: 0
   amplitude: 0
   frequency: 0
+  turnRate: 0
+  rb: {fileID: 0}
+  homingWait: 0
