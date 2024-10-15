@@ -1,14 +1,29 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
 	float moveSpeed = 5f;
+	bool isDashing = false;
+	bool canDash = true;
+
+	static readonly float dashCooldown = 1f;
+	static readonly float dashDistance = 5f;
+	static readonly float dashDuration = 0.15f;
+
+	Vector3 dashDirection;
+	TrailRenderer trailRenderer;
+
+	void Awake()
+	{
+		trailRenderer = GetComponent<TrailRenderer>();
+		trailRenderer.emitting = false;
+	}
 
 	void Update()
 	{
-		Move();
+		if (!isDashing) Move();
+		if (Input.GetKeyDown(KeyCode.Space) && canDash) StartCoroutine(Dash());
 	}
 
 	void Move()
@@ -22,5 +37,32 @@ public class MovementScript : MonoBehaviour
 
 		movementVector.Normalize();
 		transform.position += movementVector * moveSpeed * Time.deltaTime;
+
+		if (movementVector != Vector3.zero) dashDirection = movementVector;
+	}
+
+	IEnumerator Dash()
+	{
+		canDash = false;
+		isDashing = true;
+		trailRenderer.emitting = true;
+
+		Vector3 startPosition = transform.position;
+		Vector3 targetPosition = startPosition + dashDirection * dashDistance;
+		float elapsedTime = 0f;
+
+		while (elapsedTime < dashDuration)
+		{
+			transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / dashDuration);
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+
+		transform.position = targetPosition;
+		isDashing = false;
+		trailRenderer.emitting = false;
+
+		yield return new WaitForSeconds(dashCooldown);
+		canDash = true;
 	}
 }
