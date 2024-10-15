@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
-    private double _time = 0;
-    private double _period = 0.5;
-    private int _maxEnemiesToSpawn = 5;
-    private double _spawnChance = 0.3;
+    private double _time;
+    private double _period = 2;
+    private int _maxEnemiesToSpawn = 1;
+    private double _spawnChance = 1;
 
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
 
@@ -19,7 +19,8 @@ public class SpawnerManager : MonoBehaviour
 
     private void LoadEnemyPrefabs()
     {
-        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 1);
+        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 0);
+        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
     }
 
     private GameObject PickRandomEnemyPrefab()
