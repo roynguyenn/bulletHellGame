@@ -19,8 +19,9 @@ public class SpawnerManager : MonoBehaviour
 
     private void LoadEnemyPrefabs()
     {
-        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 0);
+        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 1);
         _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
+        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
     }
 
     private GameObject PickRandomEnemyPrefab()
