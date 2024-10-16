@@ -30,10 +30,12 @@ public class HungerBar : MonoBehaviour
 			if (_currentMaxHungerIndex < stages.Count)
 			{
 				_currentHunger = stages[_currentMaxHungerIndex - 1] + (_currentHunger - stages[_currentMaxHungerIndex - 1]);
+				// TODO: Handle leveling up logic
 			}
 			else
 			{
 				_currentHunger = stages[_currentMaxHungerIndex - 1];
+				// TODO: Handle winning logic
 			}
 		}
 		UpdateBars();
@@ -45,6 +47,7 @@ public class HungerBar : MonoBehaviour
 		if (_currentHunger <= 0)
 		{
 			_currentHunger = 0;
+			// TODO: Handle losing logic
 		}
 		UpdateBars();
 	}
