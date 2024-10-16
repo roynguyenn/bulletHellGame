@@ -10,10 +10,12 @@ public class SpawnerManager : MonoBehaviour
     private int _maxEnemiesToSpawn = 1;
     private double _spawnChance = 1;
 
+    private HungerBar _hungerBar;
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
 
     void Start()
     {
+        _hungerBar = FindObjectOfType<HungerBar>();
         LoadEnemyPrefabs();
     }
 
@@ -65,17 +67,13 @@ public class SpawnerManager : MonoBehaviour
         float yOffset = spriteSize.y / 2;
         float padding = 1.0f;
 
-        Vector3 spawnPosition;
         Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-
         float spawnDistance = Mathf.Sqrt(Mathf.Pow(camWidth / 2, 2) + Mathf.Pow(camHeight / 2, 2)) + Mathf.Max(xOffset, yOffset) + padding;
         float randomAngle = UnityEngine.Random.Range(0f, 2 * Mathf.PI);
 
-        spawnPosition = playerPosition + new Vector3(Mathf.Cos(randomAngle) * spawnDistance, Mathf.Sin(randomAngle) * spawnDistance, 0);
-
-        return spawnPosition;
+        return playerPosition + new Vector3(Mathf.Cos(randomAngle) * spawnDistance, Mathf.Sin(randomAngle) * spawnDistance, 0);
     }
-    
+
     void Update()
     {
         if (_time > _period)

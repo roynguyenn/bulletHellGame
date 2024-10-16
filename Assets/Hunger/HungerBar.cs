@@ -12,6 +12,8 @@ public class HungerBar : MonoBehaviour
 	private int _currentMaxHungerIndex = 0;
 	
 	public int CurrentHunger => _currentHunger;
+	public int Level => _currentMaxHungerIndex + 1;
+	public int MaxLevel => stages.Count;
 
 	private void Start()
 	{
