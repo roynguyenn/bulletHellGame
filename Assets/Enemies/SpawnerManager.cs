@@ -67,7 +67,6 @@ public class SpawnerManager : MonoBehaviour
         Vector3 spawnPosition;
         Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-        Debug.Log(camHeight + " " + camWidth + " " + xOffset + " " + yOffset + " " + padding);
         float spawnDistance = Mathf.Sqrt(Mathf.Pow(camWidth / 2, 2) + Mathf.Pow(camHeight / 2, 2)) + Mathf.Max(xOffset, yOffset) + padding;
         float randomAngle = UnityEngine.Random.Range(0f, 2 * Mathf.PI);
 
@@ -90,7 +89,7 @@ public class SpawnerManager : MonoBehaviour
                     if (randomEnemyPrefab != null)
                     {
                         GameObject newEnemy = CreateEnemyInstance(randomEnemyPrefab);
-                        Debug.Log($"Spawned enemy: {newEnemy.GetComponent<Enemy>().Name}");
+                        // Debug.Log($"Spawned enemy: {newEnemy.GetComponent<Enemy>().Name}");
                     }
                 }
             }
