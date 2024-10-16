@@ -11,20 +11,23 @@ public class MovementScript : MonoBehaviour
     static readonly float dashDistance = 5f;
     static readonly float dashDuration = 0.15f;
     static readonly float slowMotionFactor = 0.5f;
+    static readonly int hungerCostPerDash = 5;
 
     Vector3 dashDirection;
     TrailRenderer trailRenderer;
+    HungerBar hungerBar;
 
     void Awake()
     {
         trailRenderer = GetComponent<TrailRenderer>();
         trailRenderer.emitting = false;
+        hungerBar = FindObjectOfType<HungerBar>();
     }
 
     void Update()
     {
         if (!isDashing) Move();
-        if (Input.GetKeyDown(KeyCode.Space) && canDash) StartCoroutine(Dash());
+        if (Input.GetKeyDown(KeyCode.Space) && canDash && CanDash()) StartCoroutine(Dash());
     }
 
     void Move()
@@ -42,13 +45,19 @@ public class MovementScript : MonoBehaviour
         if (movementVector != Vector3.zero) dashDirection = movementVector;
     }
 
+    bool CanDash()
+    {
+        return hungerBar != null && hungerBar.CurrentHunger >= hungerCostPerDash;
+    }
+
     IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
 
-        Time.timeScale = slowMotionFactor;
+        hungerBar.DecreaseHunger(hungerCostPerDash);
 
+        Time.timeScale = slowMotionFactor;
         trailRenderer.emitting = true;
 
         Vector3 startPosition = transform.position;
@@ -65,7 +74,6 @@ public class MovementScript : MonoBehaviour
         transform.position = targetPosition;
         isDashing = false;
         trailRenderer.emitting = false;
-
         Time.timeScale = 1f;
 
         yield return new WaitForSeconds(dashCooldown);

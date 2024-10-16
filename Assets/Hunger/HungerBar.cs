@@ -10,6 +10,8 @@ public class HungerBar : MonoBehaviour
 
 	private int _currentHunger = 20;
 	private int _currentMaxHungerIndex = 0;
+	
+	public int CurrentHunger => _currentHunger;
 
 	private void Start()
 	{
