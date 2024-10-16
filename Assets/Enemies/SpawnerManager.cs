@@ -6,8 +6,8 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     private double _time;
-    private double _period = 2;
-    private int _maxEnemiesToSpawn = 1;
+    private double _period = 5;
+    private int _maxEnemiesToSpawn = 3;
     private double _spawnChance = 1;
 
     private HungerBar _hungerBar;
@@ -22,8 +22,6 @@ public class SpawnerManager : MonoBehaviour
     private void LoadEnemyPrefabs()
     {
         _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 1);
-        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
-        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
     }
 
     private GameObject PickRandomEnemyPrefab()
@@ -94,5 +92,20 @@ public class SpawnerManager : MonoBehaviour
             }
         }
         _time += Time.deltaTime;
+    }
+
+    public void IncreaseDifficulty(int newLevel)
+    {
+        switch (newLevel)
+        {
+            case 2:
+                _period--;
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
+                break;
+            case 3:
+                _period--;
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
+                break;
+        }
     }
 }

@@ -10,13 +10,16 @@ public class HungerBar : MonoBehaviour
 
 	private int _currentHunger = 20;
 	private int _currentMaxHungerIndex = 0;
-	
+
+	private SpawnerManager _spawnerManager;
+
 	public int CurrentHunger => _currentHunger;
 	public int Level => _currentMaxHungerIndex + 1;
 	public int MaxLevel => stages.Count;
 
 	private void Start()
 	{
+		_spawnerManager = FindObjectOfType<SpawnerManager>();
 		_currentHunger = stages[_currentMaxHungerIndex];
 		UpdateBars();
 	}
@@ -31,6 +34,7 @@ public class HungerBar : MonoBehaviour
 			{
 				_currentHunger = stages[_currentMaxHungerIndex - 1] + (_currentHunger - stages[_currentMaxHungerIndex - 1]);
 				// TODO: Handle leveling up logic
+				_spawnerManager.IncreaseDifficulty(Level);
 			}
 			else
 			{
