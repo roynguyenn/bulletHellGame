@@ -27,11 +27,12 @@ public class playerMechanics : MonoBehaviour
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
-
+        
         if (collision.gameObject.tag == "Bullet")
         {
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
             timer = 0f;
+            health.health -= 1;
         }
     }
 }
