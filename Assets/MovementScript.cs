@@ -1,82 +1,59 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
+public class movementScript : MonoBehaviour
 {
-    float moveSpeed = 5f;
-    bool isDashing = false;
-    bool canDash = true;
-
-    static readonly float dashCooldown = 1f;
-    static readonly float dashDistance = 5f;
-    static readonly float dashDuration = 0.15f;
-    static readonly float slowMotionFactor = 0.5f;
-    static readonly int hungerCostPerDash = 5;
-
-    Vector3 dashDirection;
-    TrailRenderer trailRenderer;
-    HungerBar hungerBar;
-
-    void Awake()
+    public Renderer map;
+    // Start is called before the first frame update
+    float movespeed = 5f;
+    void Start()
     {
-        trailRenderer = GetComponent<TrailRenderer>();
-        trailRenderer.emitting = false;
-        hungerBar = FindObjectOfType<HungerBar>();
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (!isDashing) Move();
-        if (Input.GetKeyDown(KeyCode.Space) && canDash && CanDash()) StartCoroutine(Dash());
+        Movements();
+
     }
-
-    void Move()
-    {
-        Vector3 movementVector = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W)) movementVector += Vector3.up;
-        if (Input.GetKey(KeyCode.S)) movementVector += Vector3.down;
-        if (Input.GetKey(KeyCode.D)) movementVector += Vector3.right;
-        if (Input.GetKey(KeyCode.A)) movementVector += Vector3.left;
-
-        movementVector.Normalize();
-        transform.position += movementVector * moveSpeed * Time.deltaTime;
-
-        if (movementVector != Vector3.zero) dashDirection = movementVector;
-    }
-
-    bool CanDash()
-    {
-        return hungerBar != null && hungerBar.CurrentHunger >= hungerCostPerDash;
-    }
-
-    IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-
-        hungerBar.DecreaseHunger(hungerCostPerDash);
-
-        Time.timeScale = slowMotionFactor;
-        trailRenderer.emitting = true;
-
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = startPosition + dashDirection * dashDistance;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < dashDuration)
-        {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / dashDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+    public void Movements() {
+        Vector3 movementVector = new Vector3(0,0,0);
+         if (Input.GetKey(KeyCode.W)) {
+            movementVector += new Vector3(0,1,0); 
+            // transform.position += new Vector3(0,1,0) * movespeed * Time.deltaTime;
+        }  
+        if (Input.GetKey(KeyCode.S)) {
+            movementVector += new Vector3(0,-1,0); 
+            // transform.position += new Vector3(0,-1,0) * movespeed * Time.deltaTime;
+        } 
+        if (Input.GetKey(KeyCode.D)) {
+            movementVector += new Vector3(1,0,0); 
+             // transform.position += new Vector3(1,0,0) * movespeed * Time.deltaTime;
+        } 
+        if (Input.GetKey(KeyCode.A)) {
+            movementVector += new Vector3(-1,0,0); 
+            // transform.position += new Vector3(-1,0,0) * movespeed * Time.deltaTime;
         }
+        movementVector.Normalize();
+        transform.position += movementVector * movespeed * Time.deltaTime;
+        boundPosition(map);
+    }
 
-        transform.position = targetPosition;
-        isDashing = false;
-        trailRenderer.emitting = false;
-        Time.timeScale = 1f;
+    public void boundPosition(Renderer renderer){
+        Vector3 center = renderer.transform.position;
+        float offset = 1f;
 
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
+        Vector3 direction = gameObject.transform.position - center;
+        
+        float distance = direction.magnitude;
+
+        float radius = (renderer.bounds.max.x - renderer.bounds.min.x)/2;
+        if (distance >= radius - offset){
+            Vector2 boundedPos = center + direction.normalized * (radius - offset);
+            transform.position = boundedPos;
+        }
+        
     }
 }
