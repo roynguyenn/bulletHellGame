@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class movementScript : MonoBehaviour
 {
+    public Renderer map;
     // Start is called before the first frame update
     float movespeed = 5f;
     void Start()
@@ -37,5 +38,22 @@ public class movementScript : MonoBehaviour
         }
         movementVector.Normalize();
         transform.position += movementVector * movespeed * Time.deltaTime;
+        boundPosition(map);
+    }
+
+    public void boundPosition(Renderer renderer){
+        Vector3 center = renderer.transform.position;
+        float offset = 1f;
+
+        Vector3 direction = gameObject.transform.position - center;
+        
+        float distance = direction.magnitude;
+
+        float radius = (renderer.bounds.max.x - renderer.bounds.min.x)/2;
+        if (distance >= radius - offset){
+            Vector2 boundedPos = center + direction.normalized * (radius - offset);
+            transform.position = boundedPos;
+        }
+        
     }
 }
