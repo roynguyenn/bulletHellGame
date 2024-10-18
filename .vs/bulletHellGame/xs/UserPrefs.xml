@@ -4,17 +4,15 @@
       <File FileName="Assets/SpawnerScript.cs" Line="32" Column="7" />
       <File FileName="Assets/Enemies/Enemy.cs" />
       <File FileName="Assets/CameraFollow.cs" />
-      <File FileName="Assets/Enemies/SpawnerManager.cs" />
-      <File FileName="Assets/Enemies/Types/BasicEnemy.cs" />
-      <File FileName="Assets/playerMechanics.cs" Line="12" Column="11" />
+      <File FileName="Assets/Enemies/SpawnerManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Enemies/Types/BasicEnemy.cs" Line="36" Column="3" />
+      <File FileName="Assets/playerMechanics.cs" Line="22" Column="12" />
       <File FileName="Assets/healthBarHearts.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="bulletHellGame" expanded="True">
-            <Node name="Assets" expanded="True" selected="True" />
-          </Node>
+          <Node name="bulletHellGame" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

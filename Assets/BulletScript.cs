@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
 {
 
     enum BulletTypes { Normal, Bounce, Wave, Homing }
-
+    
     // Variables for all bullet types
     [SerializeField] private BulletTypes bulletType;
 
@@ -91,9 +91,11 @@ public class BulletScript : MonoBehaviour
             if (collision.gameObject.name == "player")
             {
                 Destroy(gameObject);
-            }
-            bulletDirection = Vector3.Reflect(bulletDirection, collision.contacts[0].normal);
+            }   
+            bulletDirection = Vector3.Reflect(bulletDirection, collision.GetContact(0).normal);
             bounceCount += 1;
+            
+            
         }
     }
 }
