@@ -24,6 +24,7 @@ public class pauseDeathScreen : MonoBehaviour
     public void GameOver() {
         if (health.health <= 0) {
             Debug.Log("dead");
+            Time.timeScale = 0;
             deathPauseScreenUI.SetActive(true);
         }
 

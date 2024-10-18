@@ -23,11 +23,11 @@ public class healthShake : MonoBehaviour
         StartCoroutine(Shake());
     }
     public IEnumerator Shake() {
-        while(healthBar.GetComponent<healthBarHearts>().health == 1) {
+        while(healthBar.GetComponent<healthBarHearts>().health <= 20) {
             float elapsedtime = 0f;
             while (elapsedtime < durationShake) {
-                float xOffSet = Random.Range(-1f,1f) * 0.05f;
-                float yOffSet = Random.Range(-1f,1f) * 0.05f;
+                float xOffSet = Random.Range(-1f,1f) * 0.1f;
+                float yOffSet = Random.Range(-1f,1f) * 0.1f;
                 transform.position = Vector3.Lerp(transform.position, originalPosition + new Vector3(xOffSet,yOffSet,0), 0.5f);
                 elapsedtime += Time.deltaTime;
                 yield return null;

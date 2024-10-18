@@ -21,7 +21,7 @@ public class MovementScript : MonoBehaviour
     {
         trailRenderer = GetComponent<TrailRenderer>();
         trailRenderer.emitting = false;
-        hungerBar = FindObjectOfType<HungerBar>();
+        hungerBar = FindObjectOfType<HungerBar>();                                                              
     }
 
     void Update()

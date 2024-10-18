@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class playerMechanics : MonoBehaviour
 {
-    public healthBarHearts health;
-
+    public GameObject health;
+    public healthBarHearts healthScript;
     public float onHitInvulDuration;
     private float timer = 0f;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthScript = health.GetComponent<healthBarHearts>();
     }
 
     // Update is called once per frame
@@ -26,13 +27,14 @@ public class playerMechanics : MonoBehaviour
     }
     
     public void OnCollisionEnter2D(Collision2D collision)
-    {
+    {   
         
         if (collision.gameObject.tag == "Bullet")
         {
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
             timer = 0f;
-            health.health -= 1;
+            healthScript.TookDamage(20f);
+
         }
     }
 }
