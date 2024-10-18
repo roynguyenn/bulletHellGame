@@ -19,7 +19,7 @@ public class fullScreenTest : MonoBehaviour
     
     void Start()
     {
-       
+       myMaterial.SetFloat(screenIntensityProperty, 1);
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class fullScreenTest : MonoBehaviour
             while (elapsedTime < hurtDisplayTime)
             {
                 elapsedTime += Time.deltaTime;
-                float lerpScreenIntensity = Mathf.Lerp(0.2f, 0f, elapsedTime / hurtDisplayTime);
+                float lerpScreenIntensity = Mathf.Lerp(0.8f, 1f, elapsedTime / hurtDisplayTime);
                 myMaterial.SetFloat(screenIntensityProperty, lerpScreenIntensity);
                 yield return null;  
             }
