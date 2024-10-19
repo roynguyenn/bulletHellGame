@@ -29,7 +29,9 @@ public class SpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+        if (!player){
+            player = GameObject.FindWithTag("Player");
+        }
     }
 
     // Update is called once per frame
