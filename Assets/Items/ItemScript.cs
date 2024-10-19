@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    enum ItemTypes{Health}
+    enum ItemTypes{Ramen, Ranch, Alfredo}
     [SerializeField] private ItemTypes itemtype;
     public float lifeTime;
     private float timer;
