@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HungerBar : MonoBehaviour 
 {
-	public Image[] fullBar;
+	public GameObject[] fullBar;
 	public GameObject[] emptyBar;
 	public List<int> stages;
 
@@ -37,14 +37,14 @@ public class HungerBar : MonoBehaviour
 			_currentMaxHungerIndex++;
 			if (_currentMaxHungerIndex < stages.Count )
 			{
+				fullBar[_currentMaxHungerIndex - 1].SetActive(false);
 				_currentHunger = stages[_currentMaxHungerIndex - 1] + (_currentHunger - stages[_currentMaxHungerIndex - 1]);
 				// TODO: Handle leveling up logic
 				Debug.Log(_currentMaxHungerIndex.ToString());
 				Debug.Log("Index before");
 
-				fullBar[_currentMaxHungerIndex - 1].enabled = false;
 				emptyBar[_currentMaxHungerIndex - 1].SetActive(false);
-				fullBar[_currentMaxHungerIndex].enabled = true;
+				fullBar[_currentMaxHungerIndex].SetActive(true);
 				emptyBar[_currentMaxHungerIndex].SetActive(true);
 
 				
@@ -71,13 +71,13 @@ public class HungerBar : MonoBehaviour
 		}
 		UpdateBars();
 	}
-
+	
 	private void UpdateBars()
 	{
 		Debug.Log(_currentMaxHungerIndex.ToString());
-		Debug.Log("Index after filling bar");
+		Debug.Log("Index after filling");
 
 		float fillAmount = (float)_currentHunger / stages[_currentMaxHungerIndex];
-		fullBar[_currentMaxHungerIndex].fillAmount = Mathf.Clamp(fillAmount,0,1);
-	}
+		fullBar[_currentMaxHungerIndex].GetComponent<Image>().fillAmount = Mathf.Clamp(fillAmount,0,1);
+	}   
 }

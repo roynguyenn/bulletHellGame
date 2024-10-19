@@ -2240,8 +2240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullBar:
-  - {fileID: 1058520450}
-  - {fileID: 123730291}
+  - {fileID: 0}
+  - {fileID: 0}
   emptyBar:
   - {fileID: 828964433}
   - {fileID: 1979144097}
@@ -2276,8 +2276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullBar:
-  - {fileID: 1058520450}
-  - {fileID: 123730291}
+  - {fileID: 1058520447}
+  - {fileID: 123730285}
   emptyBar:
   - {fileID: 828964433}
   - {fileID: 1979144097}
