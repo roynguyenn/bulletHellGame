@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,28 +33,33 @@ public class HungerBar : MonoBehaviour
 	public void IncreaseHunger(int amount)
 	{
 		_currentHunger += amount;
-		if (_currentHunger > stages[_currentMaxHungerIndex])
+		_currentHunger = Mathf.Clamp(_currentHunger, 0, stages[_currentMaxHungerIndex]);
+		if (_currentHunger == stages[_currentMaxHungerIndex])
 		{
 			_currentMaxHungerIndex++;
-			if (_currentMaxHungerIndex < stages.Count )
+			if (_currentMaxHungerIndex < stages.Count)
 			{
+				_currentMaxHungerIndex = Mathf.Clamp(_currentMaxHungerIndex,0,stages.Count-1);
 				fullBar[_currentMaxHungerIndex - 1].SetActive(false);
-				_currentHunger = stages[_currentMaxHungerIndex - 1] + (_currentHunger - stages[_currentMaxHungerIndex - 1]);
+				
 				// TODO: Handle leveling up logic
-				Debug.Log(_currentMaxHungerIndex.ToString());
-				Debug.Log("Index before");
-
+				
+				
 				emptyBar[_currentMaxHungerIndex - 1].SetActive(false);
 				fullBar[_currentMaxHungerIndex].SetActive(true);
 				emptyBar[_currentMaxHungerIndex].SetActive(true);
 
 				
-
+				
+				
+				Debug.Log("DIFFICULTY INCREASED");
+				Debug.Log(Level.ToString());
 				_spawnerManager.IncreaseDifficulty(Level);
+				
 			}
 			else
 			{
-				_currentHunger = Mathf.Clamp(_currentHunger,0 ,stages[_currentMaxHungerIndex - 1]);
+				_currentHunger = Mathf.Clamp(_currentHunger,0 ,stages[_currentMaxHungerIndex-1]);
 				// TODO: Handle winning logic
 			}
 		}
@@ -71,12 +77,11 @@ public class HungerBar : MonoBehaviour
 		}
 		UpdateBars();
 	}
-	
+
 	private void UpdateBars()
 	{
-		Debug.Log(_currentMaxHungerIndex.ToString());
-		Debug.Log("Index after filling");
-
+		
+		_currentMaxHungerIndex = Mathf.Clamp(_currentMaxHungerIndex,0,stages.Count-1);
 		float fillAmount = (float)_currentHunger / stages[_currentMaxHungerIndex];
 		fullBar[_currentMaxHungerIndex].GetComponent<Image>().fillAmount = Mathf.Clamp(fillAmount,0,1);
 	}   
