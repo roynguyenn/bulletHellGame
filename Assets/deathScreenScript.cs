@@ -7,6 +7,12 @@ public class pauseDeathScreen : MonoBehaviour
 {
     public healthBarHearts health;
     public GameObject deathPauseScreenUI;
+
+    public GameObject restartScreenButtonsNext;
+
+    public GameObject restartScreenButtonsBack;
+
+    public bool callOnce = false;
     public bool isPaused = false;
     // Start is called before the first frame update
     void Start()
@@ -19,13 +25,14 @@ public class pauseDeathScreen : MonoBehaviour
     {
        GameOver();
        PauseScreen();
-       
+       callOnceButton();
     }
     public void GameOver() {
         if (health.health <= 0) {
             Debug.Log("dead");
             Time.timeScale = 0;
             deathPauseScreenUI.SetActive(true);
+        
         }
 
     }
@@ -41,6 +48,13 @@ public class pauseDeathScreen : MonoBehaviour
 
         }
 
+    }
+    public void callOnceButton() {
+        if (!callOnce) {
+            restartScreenButtonsBack.SetActive(false);
+            restartScreenButtonsNext.SetActive(false);
+            callOnce = true;
+        }
     }
     
     

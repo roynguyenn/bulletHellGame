@@ -2259,6 +2259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac329b7e871c24f41b5830d0154b6f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
 --- !u!61 &1258510764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3121,6 +3122,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 1058520448}
   deathPauseScreenUI: {fileID: 767583884}
+  restartScreenButtonsNext: {fileID: 677050915}
+  restartScreenButtonsBack: {fileID: 1723019397}
+  callOnce: 0
   isPaused: 0
 --- !u!1 &2052500690
 GameObject:
@@ -3218,10 +3222,10 @@ RectTransform:
   m_Children:
   - {fileID: 828964434}
   - {fileID: 1058520452}
-  - {fileID: 677050916}
-  - {fileID: 1723019398}
   - {fileID: 767583885}
   - {fileID: 789278536}
+  - {fileID: 1723019398}
+  - {fileID: 677050916}
   - {fileID: 17872999}
   - {fileID: 1178122297}
   - {fileID: 682019524}
