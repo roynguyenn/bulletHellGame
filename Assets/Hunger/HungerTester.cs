@@ -11,7 +11,6 @@ public class HungerTester : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.G))
 		{
 			hungerBar.IncreaseHunger(10);
-			Debug.Log("G");
 		}
 
 		if (Input.GetKeyDown(KeyCode.H))

@@ -61,7 +61,11 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
+<<<<<<< Updated upstream
     - _fullscreenIntensity: 1
+=======
+    - _fullscreenIntensity: 0.83533174
+>>>>>>> Stashed changes
     - _voronoiScale: 5
     - _voronoiSpeed: 1
     m_Colors:

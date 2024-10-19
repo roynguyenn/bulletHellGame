@@ -69,5 +69,4 @@ public class playerMechanics : MonoBehaviour
             Destroy(enemy);
         }
     }
-
 }
