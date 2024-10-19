@@ -10,7 +10,7 @@ public class playerMechanics : MonoBehaviour
     public GameObject player;
     public GameObject health;
     public HungerBar hunger;
-    public float onHitInvulDuration;
+    public float onHitInvulDuration;    
     private float invulTimer = 0f;
     public int combo = 0;
     public int hungerIncrease = 10;

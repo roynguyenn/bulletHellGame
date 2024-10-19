@@ -10,7 +10,7 @@ public class fullScreenTest : MonoBehaviour
 {   
     private float hurtDisplayTime = 1.5f;
     private float hurtDisplayFadeOut = 0.5f;
-    public GameObject healthBar;
+    public HungerBar healthBar;
     [SerializeField] private Material myMaterial;
     private int screenIntensityProperty = Shader.PropertyToID("_fullscreenIntensity");
     public float fadeCD = 3f;
@@ -32,7 +32,7 @@ public class fullScreenTest : MonoBehaviour
     }
     public IEnumerator FadeIn()
     {
-        while(healthBar.GetComponent<HungerBar>().CurrentHunger <= 20f) {
+        while(healthBar.CurrentHunger <= 20f) {
             float elapsedTime = 0f;
             while (elapsedTime < hurtDisplayTime)
             {
