@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02143cd0e4323f14da38ed9301d81764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 123730285}
+  healthBar: {fileID: 123730287}
   durationShake: 0.5
   blackHeart: {fileID: 1979144097}
 --- !u!114 &123730291
@@ -2155,7 +2155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02143cd0e4323f14da38ed9301d81764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1058520447}
+  healthBar: {fileID: 1084599029}
   durationShake: 0.5
   blackHeart: {fileID: 828964433}
 --- !u!114 &1058520450
@@ -3500,7 +3500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17fc9f39ddaae594fa0dbda3459b7633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1058520447}
+  healthBar: {fileID: 1084599029}
   myMaterial: {fileID: 2100000, guid: e2d3ea4a31b9af744a8b5180d5e7ea12, type: 2}
   fadeCD: 3
 --- !u!4 &1929572452
@@ -3530,7 +3530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3176a6eb7df831443b230688c7d0a403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: {fileID: 1058520447}
+  hunger: {fileID: 1084599029}
   deathPauseScreenUI: {fileID: 767583884}
   restartScreenButtonsNext: {fileID: 677050915}
   restartScreenButtonsBack: {fileID: 1723019397}

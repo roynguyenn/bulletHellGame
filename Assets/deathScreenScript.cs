@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class pauseDeathScreen : MonoBehaviour
 {
-    public GameObject hunger;
+    public HungerBar hunger;
     public GameObject deathPauseScreenUI;
 
     public GameObject restartScreenButtonsNext;
