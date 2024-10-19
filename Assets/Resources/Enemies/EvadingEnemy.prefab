@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3266967944144795625}
   - component: {fileID: 5698482972775779732}
   - component: {fileID: 9184763317155122282}
+  - component: {fileID: 3905084953836255695}
   m_Layer: 0
   m_Name: EvadingEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,3 +98,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25850547621d44449920d99f9392005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3905084953836255695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3218670217374227889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a0855d0bb504bb59f847f1b16bddd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerType: 0
+  bullet: {fileID: 9118897671508165577, guid: 3c4a97756f99b459a973f103393c9291, type: 3}
+  player: {fileID: 0}
+  bulletLife: 8
+  bulletSpeed: 5
+  firingRate: 1
+  rotationSpeed: 0
+  rotate: 0
+  spreadCount: 0

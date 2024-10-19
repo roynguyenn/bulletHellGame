@@ -1,29 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerMechanics : MonoBehaviour
 {
+    
+    public GameObject player;
     public GameObject health;
-    public healthBarHearts healthScript;
+    public HungerBar hunger;
     public float onHitInvulDuration;
-    private float timer = 0f;
+    private float invulTimer = 0f;
+    public int combo = 0;
+    public int hungerIncrease = 10;
     
     // Start is called before the first frame update
     void Start()
     {
-        healthScript = health.GetComponent<healthBarHearts>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-   
-        if (timer >= onHitInvulDuration)
+        invulTimer += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.E)){
+            clearEnemies();
+        }
+        if (invulTimer >= onHitInvulDuration)
         {
             gameObject.layer = LayerMask.NameToLayer("Default");
         }
+
     }
     
     public void OnCollisionEnter2D(Collision2D collision)
@@ -31,10 +40,34 @@ public class playerMechanics : MonoBehaviour
         
         if (collision.gameObject.tag == "Bullet")
         {
+            combo = 0;
+            hunger.DecreaseHunger(10);
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
-            timer = 0f;
-            healthScript.TookDamage(20f);
+            invulTimer = 0f;
+        }
 
+        if(collision.gameObject.tag == "Item"){
+            combo += 1;
+            if (combo > 3){
+                hungerIncrease += 1;
+            }
+            hunger.IncreaseHunger(hungerIncrease);
+        }
+
+        if(collision.gameObject.tag == "Enemy"){
+            combo = 0;
+            hunger.DecreaseHunger(10);
+            gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+            invulTimer = 0f;
+        }
+
+    }
+
+    public void clearEnemies(){
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies){
+            Destroy(enemy);
         }
     }
+
 }
