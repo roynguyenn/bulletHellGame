@@ -32,7 +32,7 @@ public class fullScreenTest : MonoBehaviour
     }
     public IEnumerator FadeIn()
     {
-        while(healthBar.GetComponent<healthBarHearts>().health <= 20f) {
+        while(healthBar.GetComponent<HungerBar>().CurrentHunger <= 20f) {
             float elapsedTime = 0f;
             while (elapsedTime < hurtDisplayTime)
             {

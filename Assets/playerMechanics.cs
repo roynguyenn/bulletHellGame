@@ -70,8 +70,4 @@ public class playerMechanics : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-=======
-    
->>>>>>> Stashed changes
 }

@@ -19,10 +19,14 @@ public class HungerBar : MonoBehaviour
 
 	private void Start()
 	{
+		
 		_spawnerManager = FindObjectOfType<SpawnerManager>();
-		_currentHunger = stages[_currentMaxHungerIndex];
+		_currentHunger = 50;
 		UpdateBars();
+		
 	}
+
+
 
 	public void IncreaseHunger(int amount)
 	{
@@ -52,6 +56,7 @@ public class HungerBar : MonoBehaviour
 		{
 			_currentHunger = 0;
 			// TODO: Handle losing logic
+			// from royce: Logic already handled in another script outside this one.
 		}
 		UpdateBars();
 	}

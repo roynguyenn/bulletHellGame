@@ -61,7 +61,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _fullscreenIntensity: 0.9790606
+    - _fullscreenIntensity: 1
     - _voronoiScale: 5
     - _voronoiSpeed: 1
     m_Colors:

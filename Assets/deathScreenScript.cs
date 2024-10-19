@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class pauseDeathScreen : MonoBehaviour
 {
-    public healthBarHearts health;
+    public GameObject hunger;
     public GameObject deathPauseScreenUI;
 
     public GameObject restartScreenButtonsNext;
@@ -28,7 +28,7 @@ public class pauseDeathScreen : MonoBehaviour
        callOnceButton();
     }
     public void GameOver() {
-        if (health.health <= 0) {
+        if (hunger.GetComponent<HungerBar>().CurrentHunger <= 0) {
             Debug.Log("dead");
             Time.timeScale = 0;
             deathPauseScreenUI.SetActive(true);
