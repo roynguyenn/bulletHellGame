@@ -10,6 +10,7 @@ public class BulletScript : MonoBehaviour
     // Variables for all bullet types
     [SerializeField] private BulletTypes bulletType;
 
+    public GameObject item;
     public GameObject player;
     public Vector3 bulletDirection = new Vector3(0, 0, 0);
     public float movespeed = 5f;
@@ -38,6 +39,7 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), item.GetComponent<Collider2D>());
         if(bulletType != BulletTypes.Bounce && timer >= bulletLife)
         {
             Destroy(gameObject);
@@ -58,6 +60,7 @@ public class BulletScript : MonoBehaviour
         }
         else if (bulletType == BulletTypes.Homing)
         {
+            
             Vector3 playerPosition = player.transform.position;
             Vector3 direction = (playerPosition - transform.position).normalized;
 
@@ -82,11 +85,11 @@ public class BulletScript : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (bulletType != BulletTypes.Bounce && collision.gameObject.tag != "Bullet")
+        if (bulletType != BulletTypes.Bounce && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Item")
         {
             Destroy(gameObject);
         }
-        if (bulletType == BulletTypes.Bounce && collision.gameObject.tag != "Bullet")
+        if (bulletType == BulletTypes.Bounce && collision.gameObject.tag != "Bullet" && collision.gameObject.tag != "Item")
         {
             if (collision.gameObject.name == "player")
             {

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8155240295491588612}
   - component: {fileID: 4505385133182870586}
   - component: {fileID: 6310159739856614600}
-  - component: {fileID: 8324915777582189777}
-  - component: {fileID: 6008816598150620277}
+  - component: {fileID: 4713740577342406907}
+  - component: {fileID: 7963081199421172615}
   m_Layer: 0
   m_Name: NormalBullet
   m_TagString: Bullet
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 0
+  item: {fileID: 2255112147821094949, guid: 4aa5f75425f4f47039bb05c06e113783, type: 3}
   player: {fileID: 0}
   bulletDirection: {x: 0, y: 0, z: 0}
   movespeed: 5
@@ -110,7 +111,7 @@ MonoBehaviour:
   turnRate: 1000
   rb: {fileID: 0}
   homingWait: 0
---- !u!61 &8324915777582189777
+--- !u!61 &4713740577342406907
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,7 +156,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &6008816598150620277
+--- !u!50 &7963081199421172615
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

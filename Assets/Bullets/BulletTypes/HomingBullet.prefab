@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9176307554889687050}
   - component: {fileID: 1107686483225594640}
   - component: {fileID: -7287895219813736007}
-  - component: {fileID: 8631704448722709465}
-  - component: {fileID: -4389149176407756310}
+  - component: {fileID: 6422286649551825722}
+  - component: {fileID: -7507469725207069872}
   m_Layer: 0
   m_Name: HomingBullet
   m_TagString: Bullet
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &8631704448722709465
+--- !u!50 &6422286649551825722
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -155,11 +155,11 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-4389149176407756310
+--- !u!114 &-7507469725207069872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 3
+  item: {fileID: 2255112147821094949, guid: 4aa5f75425f4f47039bb05c06e113783, type: 3}
   player: {fileID: 0}
   bulletDirection: {x: 0, y: 0, z: 0}
   movespeed: 5
@@ -180,5 +181,5 @@ MonoBehaviour:
   amplitude: 0
   frequency: 0
   turnRate: 200
-  rb: {fileID: 8631704448722709465}
+  rb: {fileID: 6422286649551825722}
   homingWait: 0

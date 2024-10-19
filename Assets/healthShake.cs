@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class healthShake : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject healthBar;
+    public HungerBar healthBar;
 
     public float durationShake = 0.5f;
     Vector3 originalPosition;
@@ -23,7 +23,7 @@ public class healthShake : MonoBehaviour
         StartCoroutine(Shake());
     }
     public IEnumerator Shake() {
-        while(healthBar.GetComponent<HungerBar>().CurrentHunger <= 20) {
+        while(healthBar.CurrentHunger <= 20) {
             float elapsedtime = 0f;
             while (elapsedtime < durationShake) {
                 float xOffSet = Random.Range(-1f,1f) * 5f;

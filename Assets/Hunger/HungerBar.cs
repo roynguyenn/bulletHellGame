@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class HungerBar : MonoBehaviour 
 {
-	public Image fullBar;
-	public GameObject emptyBar;
+	public Image[] fullBar;
+	public GameObject[] emptyBar;
 	public List<int> stages;
 
 	private int _currentHunger = 100;
@@ -34,15 +34,22 @@ public class HungerBar : MonoBehaviour
 		if (_currentHunger > stages[_currentMaxHungerIndex])
 		{
 			_currentMaxHungerIndex++;
-			if (_currentMaxHungerIndex < stages.Count)
+			if (_currentMaxHungerIndex < stages.Count )
 			{
 				_currentHunger = stages[_currentMaxHungerIndex - 1] + (_currentHunger - stages[_currentMaxHungerIndex - 1]);
 				// TODO: Handle leveling up logic
+				fullBar[_currentMaxHungerIndex - 1].enabled = false;
+				emptyBar[_currentMaxHungerIndex - 1].SetActive(false);
+				fullBar[_currentMaxHungerIndex].enabled = true;
+				emptyBar[_currentMaxHungerIndex].SetActive(true);
+
+				
+
 				_spawnerManager.IncreaseDifficulty(Level);
 			}
 			else
 			{
-				_currentHunger = stages[_currentMaxHungerIndex - 1];
+				_currentHunger = Mathf.Clamp(_currentHunger,0 ,stages[_currentMaxHungerIndex - 1]);
 				// TODO: Handle winning logic
 			}
 		}
@@ -64,6 +71,6 @@ public class HungerBar : MonoBehaviour
 	private void UpdateBars()
 	{
 		float fillAmount = (float)_currentHunger / stages[_currentMaxHungerIndex];
-		fullBar.fillAmount = fillAmount;
+		fullBar[_currentMaxHungerIndex].fillAmount = fillAmount;
 	}
 }
