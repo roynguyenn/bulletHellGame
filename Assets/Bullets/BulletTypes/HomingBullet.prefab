@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7287895219813736007}
   - component: {fileID: 6422286649551825722}
   - component: {fileID: -7507469725207069872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HomingBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: 3
-  item: {fileID: 2255112147821094949, guid: 4aa5f75425f4f47039bb05c06e113783, type: 3}
   player: {fileID: 0}
   bulletDirection: {x: 0, y: 0, z: 0}
   movespeed: 5

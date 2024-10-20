@@ -18,9 +18,9 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        itemList.Add(Resources.Load<GameObject>("Item Types/Ramen"), 5);
-        itemList.Add(Resources.Load<GameObject>("Item Types/Ranch"), 2);
-        itemList.Add(Resources.Load<GameObject>("Item Types/Alfredo"), 1);
+        itemList.Add(Resources.Load<GameObject>("Item Types/Burger"), 5);
+        itemList.Add(Resources.Load<GameObject>("Item Types/Shrimp"), 2);
+        itemList.Add(Resources.Load<GameObject>("Item Types/Tiramisu"), 1);
         
     }
 

@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    enum ItemTypes{Ramen, Ranch, Alfredo}
+    enum ItemTypes{Shrimp, Burger, Tiramisu}
     [SerializeField] private ItemTypes itemtype;
+
     public float lifeTime;
     private float timer;
 
-
+    public int hungerVal;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class ItemScript : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision){
+        
         if (collision.gameObject.tag == "Player"){
             Destroy(gameObject);
         }

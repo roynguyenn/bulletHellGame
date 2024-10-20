@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3875114024487462769}
   - component: {fileID: -314860077523170553}
   - component: {fileID: -3510726238802811509}
-  m_Layer: 0
-  m_Name: Ramen
+  m_Layer: 6
+  m_Name: Shrimp
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemtype: 0
   lifeTime: 10
-  weight: 0
+  hungerVal: 20
 --- !u!61 &-3510726238802811509
 BoxCollider2D:
   m_ObjectHideFlags: 0

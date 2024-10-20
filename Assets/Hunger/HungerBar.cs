@@ -48,6 +48,7 @@ public class HungerBar : MonoBehaviour
 				emptyBar[_currentMaxHungerIndex - 1].SetActive(false);
 				fullBar[_currentMaxHungerIndex].SetActive(true);
 				emptyBar[_currentMaxHungerIndex].SetActive(true);
+				clearAll();
 
 				
 				
@@ -85,4 +86,22 @@ public class HungerBar : MonoBehaviour
 		float fillAmount = (float)_currentHunger / stages[_currentMaxHungerIndex];
 		fullBar[_currentMaxHungerIndex].GetComponent<Image>().fillAmount = Mathf.Clamp(fillAmount,0,1);
 	}   
+
+	public void clearAll(){
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		var bullets = GameObject.FindGameObjectsWithTag("Bullet");
+		var items = GameObject.FindGameObjectsWithTag("Item");
+
+        foreach (var enemy in enemies){
+            Destroy(enemy);
+        }
+
+		foreach (var bullet in bullets){
+			Destroy(bullet);
+		}
+
+		foreach (var item in items){
+			Destroy(item);
+		}
+    }
 }

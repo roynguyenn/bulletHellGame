@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -10,7 +11,6 @@ public class BulletScript : MonoBehaviour
     // Variables for all bullet types
     [SerializeField] private BulletTypes bulletType;
 
-    public GameObject item;
     public GameObject player;
     public Vector3 bulletDirection = new Vector3(0, 0, 0);
     public float movespeed = 5f;
@@ -39,7 +39,7 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), item.GetComponent<Collider2D>());
+
         if(bulletType != BulletTypes.Bounce && timer >= bulletLife)
         {
             Destroy(gameObject);

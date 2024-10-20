@@ -105,4 +105,6 @@ public class SpawnerScript : MonoBehaviour
         float offset = 180f;
         transform.rotation = Quaternion.Euler(0, 0, angle + offset);
     }
+
+    
 }
