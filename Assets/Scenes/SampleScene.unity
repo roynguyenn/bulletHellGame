@@ -1736,7 +1736,9 @@ MonoBehaviour:
   bulletSpeed: 5
   firingRate: 1
   rotationSpeed: 0
+  lifeTime: 0
   rotate: 0
+  targetRange: 0
   spreadCount: 0
 --- !u!212 &819240940
 SpriteRenderer:
@@ -2842,7 +2844,6 @@ MonoBehaviour:
   hunger: {fileID: 1084599029}
   onHitInvulDuration: 3
   combo: 0
-  hungerIncrease: 10
 --- !u!96 &1258510768
 TrailRenderer:
   serializedVersion: 3
@@ -3085,7 +3086,7 @@ MonoBehaviour:
   map: {fileID: 1822128444}
   player: {fileID: 1258510762}
   item: {fileID: 2255112147821094949, guid: 4aa5f75425f4f47039bb05c06e113783, type: 3}
-  spawnRate: 0
+  spawnRate: 1
 --- !u!212 &1356273364
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3208,7 +3209,9 @@ MonoBehaviour:
   bulletSpeed: 5
   firingRate: 0.2
   rotationSpeed: 0.3
+  lifeTime: 0
   rotate: 1
+  targetRange: 0
   spreadCount: 10
 --- !u!212 &1571124772
 SpriteRenderer:
@@ -3375,7 +3378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1641384095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3395,7 +3398,9 @@ MonoBehaviour:
   bulletSpeed: 5
   firingRate: 1
   rotationSpeed: 0
+  lifeTime: 0
   rotate: 0
+  targetRange: 0
   spreadCount: 0
 --- !u!212 &1641384096
 SpriteRenderer:

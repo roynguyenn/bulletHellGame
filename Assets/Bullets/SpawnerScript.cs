@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
@@ -15,11 +16,12 @@ public class SpawnerScript : MonoBehaviour
     public float bulletLife = 8f;
     public float bulletSpeed = 5f;
     public float firingRate = 1f;
-    private float timer = 0f;
+    private float shootTimer = 0f;
     public float rotationSpeed;
-
+    public float lifeTime;
+    private float lifeTimer = 0f;
     public bool rotate;
-
+    public float targetRange;
     
 
     // Spread type variables
@@ -37,8 +39,11 @@ public class SpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
+        shootTimer += Time.deltaTime;
+        lifeTimer += Time.deltaTime;
+        if (lifeTimer >= lifeTime){
+            Destroy(gameObject);
+        }
         if (rotate)
         {
             transform.Rotate(0f, 0f, rotationSpeed);
@@ -51,19 +56,19 @@ public class SpawnerScript : MonoBehaviour
         }
         else if(spawnerType == SpawnerTypes.Spread)
         {
-            if (timer >= firingRate)
+            if (shootTimer >= firingRate)
             {
                 SpreadShot(spreadCount);
-                timer = 0f;
+                shootTimer = 0f;
             }
         }
         
         
 
-        if (timer >= firingRate)
+        if (shootTimer >= firingRate && inRange(player))
         {
             Fire();
-            timer = 0f;
+            shootTimer = 0f;
         }
     }
 
@@ -106,5 +111,10 @@ public class SpawnerScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle + offset);
     }
 
-    
+    public bool inRange(GameObject player){
+        Vector3 playerPos = player.transform.position;
+        float distance = (playerPos - gameObject.transform.position).magnitude;
+
+        return distance <= targetRange;
+    }
 }
