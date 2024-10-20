@@ -79,7 +79,8 @@ public class SpawnerScript : MonoBehaviour
         spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
         spawnedBullet.GetComponent<BulletScript>().bulletDirection = transform.right;
         spawnedBullet.GetComponent<BulletScript>().player = player;
-        spawnedBullet.transform.rotation = transform.rotation;   
+        spawnedBullet.transform.rotation = transform.rotation;
+        spawnedBullet.transform.Rotate(0,0,-90f);
     }
 
     public void SpreadShot(int shotCount)
@@ -88,15 +89,20 @@ public class SpawnerScript : MonoBehaviour
         Vector3 originalDirection = transform.right;
         float circleDeg = 360f;
         Quaternion rotation = Quaternion.Euler(0, 0, circleDeg / shotCount);
+        Quaternion bulletRotate = transform.rotation * Quaternion.Euler(0,0,-90f);
+
         Vector3 rotatedVector = originalDirection;
         for (int i = 0; i < shotCount; i++)
         {
-            spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            
+            spawnedBullet = Instantiate(bullet, transform.position, bulletRotate);
             spawnedBullet.GetComponent<BulletScript>().movespeed = bulletSpeed;
             spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
             spawnedBullet.GetComponent<BulletScript>().bulletDirection = originalDirection;
             // Can't assign scene object to prefab, so need to instantiate during runtime
             spawnedBullet.GetComponent<BulletScript>().player = player;
+
+            bulletRotate *= rotation;
             rotatedVector = rotation * originalDirection;
             originalDirection = rotatedVector;
         }

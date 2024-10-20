@@ -10,7 +10,7 @@ public class HungerBar : MonoBehaviour
 	public GameObject[] emptyBar;
 	public List<int> stages;
 
-	private int _currentHunger = 100;
+	private int _currentHunger = 50;
 	private int _currentMaxHungerIndex = 0;
 
 	private SpawnerManager _spawnerManager;

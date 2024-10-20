@@ -32,7 +32,7 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -70,6 +70,7 @@ public class BulletScript : MonoBehaviour
 
             if (timer >= homingWait)
             {
+                rb.freezeRotation = false;
                 rb.velocity = transform.right * movespeed;
             }
             

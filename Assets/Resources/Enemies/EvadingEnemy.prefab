@@ -118,7 +118,9 @@ MonoBehaviour:
   bulletSpeed: 5
   firingRate: 1
   rotationSpeed: 0
+  lifeTime: 15
   rotate: 0
+  targetRange: 10
   spreadCount: 0
 --- !u!61 &-522944193288135087
 BoxCollider2D:

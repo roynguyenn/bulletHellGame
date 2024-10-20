@@ -2384,7 +2384,7 @@ MonoBehaviour:
   emptyBar:
   - {fileID: 828964433}
   - {fileID: 1979144097}
-  stages: 6400000096000000c8000000
+  stages: 64000000fa000000f4010000
 --- !u!1 &1084599028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,10 +3209,10 @@ MonoBehaviour:
   bulletSpeed: 5
   firingRate: 0.2
   rotationSpeed: 0.3
-  lifeTime: 0
-  rotate: 1
+  lifeTime: 1000
+  rotate: 0
   targetRange: 0
-  spreadCount: 10
+  spreadCount: 1
 --- !u!212 &1571124772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3374,7 +3374,7 @@ GameObject:
   - component: {fileID: 1641384095}
   m_Layer: 0
   m_Name: SpawnerAim
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3398,10 +3398,10 @@ MonoBehaviour:
   bulletSpeed: 5
   firingRate: 1
   rotationSpeed: 0
-  lifeTime: 0
+  lifeTime: 1000
   rotate: 0
-  targetRange: 0
-  spreadCount: 0
+  targetRange: 10
+  spreadCount: 5
 --- !u!212 &1641384096
 SpriteRenderer:
   m_ObjectHideFlags: 0

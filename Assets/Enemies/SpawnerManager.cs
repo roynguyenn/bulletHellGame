@@ -23,6 +23,7 @@ public class SpawnerManager : MonoBehaviour
     {
         _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 1);
         _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"), 1);
+        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicRandomShoot"), 1);
     }
 
     private GameObject PickRandomEnemyPrefab()
@@ -103,11 +104,16 @@ public class SpawnerManager : MonoBehaviour
                 _period--;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SpreadShooterClose"), 1);
+
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
                 break;
             case 3:
                 _period--;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/HomingEnemy"), 1);
+                
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
                 break;
         }
     }
