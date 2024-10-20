@@ -10,6 +10,7 @@ public class SpawnerManager : MonoBehaviour
     private int _maxEnemiesToSpawn = 3;
     private double _spawnChance = 1;
 
+    public GameObject mainShooter;
     private HungerBar _hungerBar;
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
 
@@ -114,6 +115,7 @@ public class SpawnerManager : MonoBehaviour
                 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
+                mainShooter.SetActive(true);
                 break;
         }
     }

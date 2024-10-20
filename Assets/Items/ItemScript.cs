@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    enum ItemTypes{Shrimp, Burger, Tiramisu}
-    [SerializeField] private ItemTypes itemtype;
-
+    public enum ItemTypes{Shrimp, Burger, Tiramisu}
+    public ItemTypes itemtype;
+    public GameObject player;
     public float lifeTime;
     private float timer;
 

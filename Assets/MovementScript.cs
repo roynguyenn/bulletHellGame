@@ -6,7 +6,7 @@ public class movementScript : MonoBehaviour
 {
     public Renderer map;
     // Start is called before the first frame update
-    float movespeed = 5f;
+    public float movespeed = 5f;
     void Start()
     {
         

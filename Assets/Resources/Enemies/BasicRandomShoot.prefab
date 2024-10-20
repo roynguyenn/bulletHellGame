@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5796515111120887844}
   - component: {fileID: 9153167144495835550}
   - component: {fileID: 5209003970408381077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicRandomShoot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
