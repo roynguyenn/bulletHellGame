@@ -114,7 +114,7 @@ public class SpawnerManager : MonoBehaviour
                 _period--;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
-                
+                mainShooter.SetActive(true);
                 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
@@ -126,7 +126,10 @@ public class SpawnerManager : MonoBehaviour
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/EvadingEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/SpreadShooterClose"));
 
-                mainShooter.SetActive(true);
+                break;
+            case 5:
+                mainShooter.SetActive(false);
+                
                 break;
         }
     }
