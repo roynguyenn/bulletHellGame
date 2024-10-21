@@ -10,6 +10,7 @@ public class SpawnerManager : MonoBehaviour
     private int _maxEnemiesToSpawn = 3;
     private double _spawnChance = 1;
 
+    public Animator animator;
     public GameObject mainShooter;
     public GameObject waveShooter;
     public SpawnerScript mainShooterScript;
@@ -111,6 +112,8 @@ public class SpawnerManager : MonoBehaviour
 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
 
+                animator.SetBool("stage2", true);
+
                 break;
             case 3:
                 _period--;
@@ -121,6 +124,9 @@ public class SpawnerManager : MonoBehaviour
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
+
+                animator.SetBool("stage3", true);
+                animator.SetBool("stage2", false);
                 break;
             case 4:
                 _period -= 2;
@@ -133,7 +139,7 @@ public class SpawnerManager : MonoBehaviour
             case 5:
                 _period --;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
-                
+
                 mainShooter.SetActive(false);
                 waveShooter.SetActive(true);
                 break;
