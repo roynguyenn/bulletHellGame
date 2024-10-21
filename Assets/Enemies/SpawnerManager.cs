@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     private double _time;
-    private double _period = 5;
+    private double _period = 10;
     private int _maxEnemiesToSpawn = 3;
     private double _spawnChance = 1;
 
@@ -103,18 +103,29 @@ public class SpawnerManager : MonoBehaviour
         {
             case 2:
                 _period--;
-                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
+                
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SpreadShooterClose"), 1);
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/HomingEnemy"), 1);
 
-                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
+
                 break;
             case 3:
                 _period--;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
-                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/HomingEnemy"), 1);
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
                 
-                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
+                
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
+                break;
+            case 4:
+                _period -= 2;
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/HomingEnemy"));
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/EvadingEnemy"));
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/SpreadShooterClose"));
+
                 mainShooter.SetActive(true);
                 break;
         }

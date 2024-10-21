@@ -18,9 +18,9 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        itemList.Add(Resources.Load<GameObject>("Item Types/Burger"), 70);
+        // itemList.Add(Resources.Load<GameObject>("Item Types/Burger"), 70);
         itemList.Add(Resources.Load<GameObject>("Item Types/Shrimp"), 29);
-        itemList.Add(Resources.Load<GameObject>("Item Types/Tiramisu"), 1);
+        //itemList.Add(Resources.Load<GameObject>("Item Types/Tiramisu"), 1);
         
     }
 
@@ -37,8 +37,8 @@ public class ItemManager : MonoBehaviour
     public Vector3 randomSpawn(Renderer renderer){
         float maxX = renderer.bounds.max.x;
         float minX = renderer.bounds.min.x;
-        float offset = 3f;
-        float radius = (maxX - minX - offset)/2;
+        float offset = 10f;
+        float radius = (maxX - minX)/2 - offset;
 
         return Random.insideUnitCircle * radius;
     }

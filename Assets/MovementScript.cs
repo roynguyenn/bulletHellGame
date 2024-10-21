@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class movementScript : MonoBehaviour
 {
     public Renderer map;
+    public CircleCollider2D mapCollider;
     // Start is called before the first frame update
     public float movespeed = 5f;
     void Start()
@@ -38,22 +41,21 @@ public class movementScript : MonoBehaviour
         }
         movementVector.Normalize();
         transform.position += movementVector * movespeed * Time.deltaTime;
-        boundPosition(map);
+
+        boundPosition(mapCollider);
     }
 
-    public void boundPosition(Renderer renderer){
-        Vector3 center = renderer.transform.position;
-        float offset = 1f;
-
+    public void boundPosition(CircleCollider2D collider){
+        Vector3 center = (Vector2) collider.transform.position +(collider.offset * collider.transform.localScale.x);
+        Debug.Log(center);
+        float offset = 2f;
         Vector3 direction = gameObject.transform.position - center;
-        
         float distance = direction.magnitude;
 
-        float radius = (renderer.bounds.max.x - renderer.bounds.min.x)/2;
-        if (distance >= radius - offset){
-            Vector2 boundedPos = center + direction.normalized * (radius - offset);
+        float radius = collider.radius * collider.transform.localScale.x;
+        if (distance >= radius + offset){
+            Vector2 boundedPos = center + direction.normalized * (radius + offset);
             transform.position = boundedPos;
         }
-        
     }
 }
