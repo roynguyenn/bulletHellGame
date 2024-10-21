@@ -134,7 +134,7 @@ MonoBehaviour:
   bounceCap: 0
   amplitude: 2
   frequency: 20
-  turnRate: 400
+  turnRate: 100
   rb: {fileID: 6422286649551825722}
   homingWait: 2
 --- !u!70 &2742830507660625985

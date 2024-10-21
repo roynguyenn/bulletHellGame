@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &81746168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &83459456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainShooter: {fileID: 576298084}
+  mainShooterScript: {fileID: 576298085}
 --- !u!1 &123730285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,7 +1406,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletLife: 8
   bulletSpeed: 5
-  firingRate: 0.2
+  firingRate: 1
   rotationSpeed: 0.3
   lifeTime: 99999
   rotate: 1
@@ -4693,6 +4694,7 @@ MonoBehaviour:
   deathPauseScreenUI: {fileID: 767583884}
   restartScreenButtonsNext: {fileID: 677050915}
   restartScreenButtonsBack: {fileID: 1723019397}
+  mainShooter: {fileID: 576298084}
   callOnce: 0
   isPaused: 0
 --- !u!1 &1979144097
@@ -4948,7 +4950,7 @@ Transform:
   m_GameObject: {fileID: 2019172807}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: -0.4, z: 0}
+  m_LocalPosition: {x: 8.24, y: -0.25, z: 0}
   m_LocalScale: {x: 1.5304132, y: 1.5304132, z: 0.39011}
   m_ConstrainProportionsScale: 0
   m_Children: []
