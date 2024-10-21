@@ -150,7 +150,7 @@ MonoBehaviour:
   bulletLife: 8
   bounceCap: 0
   amplitude: 2
-  frequency: 1
+  frequency: 20
   turnRate: 0
   rb: {fileID: 0}
   homingWait: 0

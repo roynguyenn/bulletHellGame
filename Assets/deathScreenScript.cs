@@ -11,6 +11,7 @@ public class pauseDeathScreen : MonoBehaviour
     public GameObject restartScreenButtonsNext;
 
     public GameObject restartScreenButtonsBack;
+    public GameObject mainShooter;
 
     public bool callOnce = false;
     public bool isPaused = false;
@@ -31,6 +32,7 @@ public class pauseDeathScreen : MonoBehaviour
         if (hunger.GetComponent<HungerBar>().CurrentHunger <= 0) {
             Debug.Log("dead");
             Time.timeScale = 0;
+            mainShooter.SetActive(false);
             deathPauseScreenUI.SetActive(true);
         
         }

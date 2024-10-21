@@ -67,7 +67,9 @@ public class playerMechanics : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("ItemInvulnerable");
                 Invoke("cancelInvulnerability", itemInvulDuration);
             }
+
             hunger.IncreaseHunger(item.hungerVal + hungerIncrease);
+            
         }
 
         if(collision.gameObject.tag == "Enemy"){
