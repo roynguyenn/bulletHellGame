@@ -8,7 +8,9 @@ public class EvadingEnemy : Enemy
 
 	public static float CloseDistance { get; set; } = 2.5f;
 	public float Speed { get; set; } = 5f;
-
+	
+	private float lifeTime = 15f;
+	private float timer = 0f;
 	private Transform _playerTransform;
 	private Vector3 _targetPosition;
 	private bool _movingAway;
@@ -22,6 +24,7 @@ public class EvadingEnemy : Enemy
 
 	void Update()
 	{
+		timer += Time.deltaTime;
 		float distanceToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
 		if (distanceToPlayer < CloseDistance)
 		{
@@ -30,6 +33,11 @@ public class EvadingEnemy : Enemy
 		else
 		{
 			MoveToTarget();
+		}
+
+		if(timer >= lifeTime){
+			Destroy(gameObject);
+			timer = 0f;
 		}
 	}
 

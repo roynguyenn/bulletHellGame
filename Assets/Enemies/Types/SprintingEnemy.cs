@@ -9,6 +9,8 @@ public class SprintingEnemy : Enemy
 
     private Transform _playerTransform;
     private Vector3 _savedPlayerPosition;
+    private float lifeTime = 20f;
+    private float timer = 0f;
     private bool _isRushing = false;
 
     private static readonly float RotationSpeed = 180f; // Degrees per second
@@ -19,6 +21,13 @@ public class SprintingEnemy : Enemy
 
     private Coroutine _stateMachine;
 
+    void Update(){
+        timer += Time.deltaTime;
+        if (timer >= lifeTime){
+            Destroy(gameObject);
+            timer = 0f;
+        }
+    }
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

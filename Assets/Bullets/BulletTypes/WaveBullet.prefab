@@ -149,8 +149,8 @@ MonoBehaviour:
   movespeed: 1
   bulletLife: 8
   bounceCap: 0
-  amplitude: 2
-  frequency: 20
+  amplitude: 1
+  frequency: 10
   turnRate: 0
   rb: {fileID: 0}
   homingWait: 0

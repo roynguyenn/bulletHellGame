@@ -10,7 +10,11 @@ public class SpawnerManager : MonoBehaviour
     private int _maxEnemiesToSpawn = 3;
     private double _spawnChance = 1;
 
+    public Animator animator;
+    public GameObject apple;
     public GameObject mainShooter;
+    public GameObject waveShooter;
+    public SpawnerScript mainShooterScript;
     private HungerBar _hungerBar;
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
 
@@ -23,8 +27,8 @@ public class SpawnerManager : MonoBehaviour
     private void LoadEnemyPrefabs()
     {
         _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 1);
-        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"), 1);
-        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicRandomShoot"), 1);
+        //_enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"), 1);
+        //_enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicRandomShoot"), 1);
     }
 
     private GameObject PickRandomEnemyPrefab()
@@ -109,16 +113,22 @@ public class SpawnerManager : MonoBehaviour
 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
 
+                animator.SetBool("stage2", true);
+
                 break;
             case 3:
                 _period--;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
                 mainShooter.SetActive(true);
+                apple.SetActive(true);
                 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
+
+                animator.SetBool("stage3", true);
+                animator.SetBool("stage2", false);
                 break;
             case 4:
                 _period -= 2;
@@ -128,8 +138,11 @@ public class SpawnerManager : MonoBehaviour
 
                 break;
             case 5:
+                _period --;
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
+
                 mainShooter.SetActive(false);
-                
+                waveShooter.SetActive(true);
                 break;
         }
     }
