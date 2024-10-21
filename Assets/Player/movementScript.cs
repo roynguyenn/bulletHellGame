@@ -9,7 +9,7 @@ public class movementScript : MonoBehaviour
     public Renderer map;
     public CircleCollider2D mapCollider;
     // Start is called before the first frame update
-    public float movespeed = 5f;
+    public float movespeed = 3f;
     void Start()
     {
         
@@ -41,14 +41,14 @@ public class movementScript : MonoBehaviour
         }
         movementVector.Normalize();
         transform.position += movementVector * movespeed * Time.deltaTime;
-
+        Debug.Log(movespeed);
         boundPosition(mapCollider);
     }
 
     public void boundPosition(CircleCollider2D collider){
         Vector3 center = (Vector2) collider.transform.position +(collider.offset * collider.transform.localScale.x);
         Debug.Log(center);
-        float offset = 2f;
+        float offset = 0f;
         Vector3 direction = gameObject.transform.position - center;
         float distance = direction.magnitude;
 

@@ -11,6 +11,7 @@ public class SpawnerManager : MonoBehaviour
     private double _spawnChance = 1;
 
     public GameObject mainShooter;
+    public GameObject waveShooter;
     public SpawnerScript mainShooterScript;
     private HungerBar _hungerBar;
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
@@ -130,8 +131,11 @@ public class SpawnerManager : MonoBehaviour
                 upgradeShooter();
                 break;
             case 5:
-                mainShooter.SetActive(false);
+                _period --;
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
                 
+                mainShooter.SetActive(false);
+                waveShooter.SetActive(true);
                 break;
         }
     }
