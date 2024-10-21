@@ -330,7 +330,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45923229}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &81746167
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,8 +438,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of cbfccea (New Health and Audio)
 --- !u!1 &83459455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,10 +4694,7 @@ MonoBehaviour:
   deathPauseScreenUI: {fileID: 767583884}
   restartScreenButtonsNext: {fileID: 677050915}
   restartScreenButtonsBack: {fileID: 1723019397}
-<<<<<<< HEAD
   mainShooter: {fileID: 576298084}
-=======
->>>>>>> parent of cbfccea (New Health and Audio)
   callOnce: 0
   isPaused: 0
 --- !u!1 &1979144097
@@ -4794,7 +4788,6 @@ RectTransform:
   m_AnchoredPosition: {x: -208.3, y: 233}
   m_SizeDelta: {x: 8, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 --- !u!1 &2011934118
 GameObject:
   m_ObjectHideFlags: 0
@@ -4963,8 +4956,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of cbfccea (New Health and Audio)
 --- !u!1 &2052500690
 GameObject:
   m_ObjectHideFlags: 0
@@ -5260,10 +5251,7 @@ SceneRoots:
   - {fileID: 1356273365}
   - {fileID: 1084599030}
   - {fileID: 576298087}
-<<<<<<< HEAD
   - {fileID: 2011934120}
   - {fileID: 1259226535}
   - {fileID: 2019172809}
   - {fileID: 81746170}
-=======
->>>>>>> parent of cbfccea (New Health and Audio)
