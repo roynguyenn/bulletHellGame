@@ -11,6 +11,7 @@ public class SpawnerManager : MonoBehaviour
     private double _spawnChance = 1;
 
     public GameObject mainShooter;
+    public SpawnerScript mainShooterScript;
     private HungerBar _hungerBar;
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
 
@@ -114,7 +115,7 @@ public class SpawnerManager : MonoBehaviour
                 _period--;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
-                
+                mainShooter.SetActive(true);
                 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
@@ -126,8 +127,18 @@ public class SpawnerManager : MonoBehaviour
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/EvadingEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/SpreadShooterClose"));
 
-                mainShooter.SetActive(true);
+                upgradeShooter();
+                break;
+            case 5:
+                mainShooter.SetActive(false);
+                
                 break;
         }
+    }
+
+    public void upgradeShooter(){
+        mainShooterScript.firingRate = 0.4f;
+        mainShooterScript.spreadCount = 10;
+
     }
 }

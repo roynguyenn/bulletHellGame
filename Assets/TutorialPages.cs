@@ -31,8 +31,8 @@ public class TutorialPages : MonoBehaviour
     }
 
     public void showFirstPage() {
-        Time.timeScale = 0;
         pauseScreen.SetActive(false);
+        exitButton.SetActive(true);
         backButton.SetActive(true);
         nextButton.SetActive(true);
         for (int i = 0; i < tutorialPages.Length; i++) {
@@ -51,10 +51,6 @@ public class TutorialPages : MonoBehaviour
         tutorialPages[pageIndex].SetActive(false);
         pageIndex+=1;
         pageIndex = Mathf.Clamp(pageIndex,0,6);
-        if (pageIndex == tutorialPages.Length-1) {
-            nextButton.SetActive(false);
-            exitButton.SetActive(true);
-        }
         tutorialPages[pageIndex].SetActive(true);
     }
     public void backPage() {
@@ -63,8 +59,6 @@ public class TutorialPages : MonoBehaviour
             pageIndex -= 1;
             pageIndex = Mathf.Clamp(pageIndex, 0, 6);
             tutorialPages[pageIndex].SetActive(true);
-            nextButton.SetActive(true);
-            exitButton.SetActive(false);
         }
             
         
@@ -78,6 +72,5 @@ public class TutorialPages : MonoBehaviour
         exitButton.SetActive(false);
         backButton.SetActive(false);
         nextButton.SetActive(false);
-        Time.timeScale = 1;
     }
 }
