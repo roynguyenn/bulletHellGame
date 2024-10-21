@@ -10,8 +10,8 @@ public class playerMechanics : MonoBehaviour
     public GameObject player;
     public GameObject health;
     public HungerBar hunger;
-    public float onHitInvulDuration;    
-    private float invulTimer = 0f;
+    private float onHitInvulDuration = 3f;    
+    private float itemInvulDuration = 6f;
     public int combo = 0;
     private int hungerIncrease = 0;
     public float gameTimer = 0f;
@@ -29,12 +29,12 @@ public class playerMechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        invulTimer += Time.deltaTime;
+        // invulTimer += Time.deltaTime;
         gameTimer += Time.deltaTime;
-        if (invulTimer >= onHitInvulDuration)
-        {
-            gameObject.layer = LayerMask.NameToLayer("Default");
-        }
+        // if (invulTimer >= onHitInvulDuration)
+        // {
+        //     gameObject.layer = LayerMask.NameToLayer("Default");
+        // }
 
     }
     
@@ -47,7 +47,7 @@ public class playerMechanics : MonoBehaviour
             hungerIncrease = 0;
             hunger.DecreaseHunger(10);
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
-            invulTimer = 0f;
+            Invoke("cancelInvulnerability", onHitInvulDuration);
         }
 
         if (collision.gameObject.tag == "Item"){
@@ -64,7 +64,8 @@ public class playerMechanics : MonoBehaviour
             }
 
             if (item.itemtype == ItemScript.ItemTypes.Tiramisu){
-                clearEnemies();
+                gameObject.layer = LayerMask.NameToLayer("ItemInvulnerable");
+                Invoke("cancelInvulnerability", itemInvulDuration);
             }
             hunger.IncreaseHunger(item.hungerVal + hungerIncrease);
         }
@@ -74,7 +75,7 @@ public class playerMechanics : MonoBehaviour
             hungerIncrease = 0;
             hunger.DecreaseHunger(10);
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
-            invulTimer = 0f;
+            Invoke("cancelInvulnerability", onHitInvulDuration);
         }
 
     }
@@ -85,6 +86,10 @@ public class playerMechanics : MonoBehaviour
 
     public void cancelSpeedBoost(){
         movement.movespeed = originalSpeed;
+    }
+
+    public void cancelInvulnerability(){
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     public void clearEnemies(){
