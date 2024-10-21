@@ -27,14 +27,18 @@ public class SoundEffectsPlayer : MonoBehaviour
     void Update()
     {
         gameThemePlay();
+        mouseButtonTurn();
     }
     public void tutorialPageTurnButton() {
         src.clip = tutorialPages;
         src.Play();
     }
     public void mouseButtonTurn() {
-        src.clip = mouseButton;
-        src.Play();
+        if (Input.GetKey(KeyCode.Mouse1)) {
+            src.clip = mouseButton;
+            src.Play();
+        }
+        
     }
     public void gameThemePlay() {
         
