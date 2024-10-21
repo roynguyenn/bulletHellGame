@@ -37,8 +37,8 @@ public class ItemManager : MonoBehaviour
     public Vector3 randomSpawn(Renderer renderer){
         float maxX = renderer.bounds.max.x;
         float minX = renderer.bounds.min.x;
-        float offset = 10f;
-        float radius = (maxX - minX)/2 - offset;
+        float offset = 3f;
+        float radius = (maxX - minX - offset)/2;
 
         return Random.insideUnitCircle * radius;
     }

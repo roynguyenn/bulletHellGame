@@ -11,8 +11,10 @@ public class pauseDeathScreen : MonoBehaviour
     public GameObject restartScreenButtonsNext;
 
     public GameObject restartScreenButtonsBack;
-    public GameObject mainShooter;
 
+    public GameObject pauseButton;
+
+    public GameObject continueButton;
     public bool callOnce = false;
     public bool isPaused = false;
     // Start is called before the first frame update
@@ -25,31 +27,25 @@ public class pauseDeathScreen : MonoBehaviour
     void Update()
     {
        GameOver();
-       PauseScreen();
        callOnceButton();
     }
     public void GameOver() {
         if (hunger.GetComponent<HungerBar>().CurrentHunger <= 0) {
             Debug.Log("dead");
             Time.timeScale = 0;
-            mainShooter.SetActive(false);
             deathPauseScreenUI.SetActive(true);
         
         }
 
     }
     public void PauseScreen() {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused) {
-            deathPauseScreenUI.SetActive(true);
-            Time.timeScale = 0;
-            isPaused = true;
-        } else if (Input.GetKeyDown(KeyCode.Escape) && isPaused){
-            deathPauseScreenUI.SetActive(false);
-            isPaused = false;
-            Time.timeScale = 1;
-
-        }
-
+        
+        deathPauseScreenUI.SetActive(true);
+        pauseButton.SetActive(false);
+        continueButton.SetActive(true);
+        Time.timeScale = 0;
+        isPaused = true;    
+        
     }
     public void callOnceButton() {
         if (!callOnce) {
@@ -57,6 +53,13 @@ public class pauseDeathScreen : MonoBehaviour
             restartScreenButtonsNext.SetActive(false);
             callOnce = true;
         }
+    }
+    public void continueGame() {
+        deathPauseScreenUI.SetActive(false);
+        pauseButton.SetActive(true);
+        continueButton.SetActive(false);
+        isPaused = false;
+        Time.timeScale = 1;
     }
     
     
