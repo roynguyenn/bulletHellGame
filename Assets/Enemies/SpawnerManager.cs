@@ -14,6 +14,7 @@ public class SpawnerManager : MonoBehaviour
     public GameObject apple;
     public GameObject mainShooter;
     public GameObject waveShooter;
+    public CircleCollider2D collider;
     public SpawnerScript mainShooterScript;
     private HungerBar _hungerBar;
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
@@ -50,8 +51,24 @@ public class SpawnerManager : MonoBehaviour
     private GameObject CreateEnemyInstance(GameObject enemyPrefab)
     {
         Vector3 spawnPosition = GetRandomSpawnPosition(enemyPrefab);
-        GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        return enemyInstance;
+        if (inCircle(collider, spawnPosition)){
+            Debug.Log("true");
+            GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            return enemyInstance;
+        }
+        
+        return null;
+    }
+    private bool inCircle(CircleCollider2D collider, Vector3 position){
+        Vector3 center = (Vector2) collider.transform.position +(collider.offset * collider.transform.localScale.x);
+        float radius = collider.radius * collider.transform.localScale.x;
+
+        Vector3 distance = position - center;
+        if (distance.magnitude <= radius){
+            return true;
+        }
+        return false;
+
     }
 
     private Vector3 GetRandomSpawnPosition(GameObject enemyPrefab)
