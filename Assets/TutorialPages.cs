@@ -16,7 +16,9 @@ public class TutorialPages : MonoBehaviour
     public GameObject mainMenu;
 
     public GameObject inTheGame;
+    public GameObject mainMenuButton;
 
+    public GameObject pauseButton;
 
     public int pageIndex = 0;
     // Start is called before the first frame update
@@ -95,5 +97,12 @@ public class TutorialPages : MonoBehaviour
             pauseScreen.SetActive(false);
         }
         Time.timeScale = 1;
+    }
+    public void mainMenuScreen() {
+        mainMenu.SetActive(true);
+        pauseScreen.SetActive(false);
+        pauseButton.SetActive(false);
+        deathScreen.SetActive(false);
+        
     }
 }

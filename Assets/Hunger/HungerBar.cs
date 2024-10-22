@@ -10,7 +10,7 @@ public class HungerBar : MonoBehaviour
 	public GameObject[] emptyBar;
 	public List<int> stages;
 
-	private int _currentHunger = 50;
+	private int _currentHunger = 10;
 	private int _currentMaxHungerIndex = 0;
 
 	private SpawnerManager _spawnerManager;
@@ -23,7 +23,7 @@ public class HungerBar : MonoBehaviour
 	{
 		
 		_spawnerManager = FindObjectOfType<SpawnerManager>();
-		_currentHunger = 100;
+		_currentHunger = 50;
 		UpdateBars();
 		
 	}
@@ -32,7 +32,7 @@ public class HungerBar : MonoBehaviour
 
 	public void IncreaseHunger(int amount)
 	{
-		_currentHunger += amount;
+		_currentHunger += amount*100;
 		_currentHunger = Mathf.Clamp(_currentHunger, 0, stages[_currentMaxHungerIndex]);
 		if (_currentHunger == stages[_currentMaxHungerIndex])
 		{

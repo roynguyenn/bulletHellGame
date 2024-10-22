@@ -12,7 +12,7 @@ public class newHealthShake : MonoBehaviour
     public GameObject blackHeart;
     void Start()
     {
-        transform.localPosition = new Vector3(-292f, 167f, 0f);
+        transform.localPosition = new Vector3(-292f, 109.9f, 0f);
         originalLocalPosition = transform.localPosition;
     }
 
