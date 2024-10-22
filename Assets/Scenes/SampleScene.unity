@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &81746168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,10 +365,10 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletLife: 8
   bulletSpeed: 0.5
-  firingRate: 0.3
-  rotationSpeed: 0.3
+  firingRate: 0.6
+  rotationSpeed: 1
   lifeTime: 10000
-  rotate: 0
+  rotate: 1
   targetRange: 1000
   spreadCount: 8
 --- !u!212 &81746169
@@ -412,7 +412,7 @@ SpriteRenderer:
   m_SortingLayerID: -822413583
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 10dc8d6e1cc467944a7af779d5d4fc94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -433,7 +433,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3344,7 +3344,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1584845026, guid: a391ff48b01624de0b1210345059300a, type: 3}
-  m_Color: {r: 0.9150943, g: 0.88487893, b: 0.88487893, a: 1}
+  m_Color: {r: 0.8039216, g: 0.80784315, b: 0.8039216, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3381,7 +3381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f94273521ce94477a611d59c516e250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1258510762}
   health: {fileID: 1058520447}
   hunger: {fileID: 1084599029}
   combo: 0
@@ -3622,7 +3622,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258510762}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c5700f0a4b936410caf1b34ab2d3de75, type: 2}
   m_CullingMode: 0
@@ -3769,7 +3769,7 @@ MonoBehaviour:
   map: {fileID: 1822128444}
   player: {fileID: 1258510762}
   item: {fileID: 2255112147821094949, guid: 4aa5f75425f4f47039bb05c06e113783, type: 3}
-  spawnRate: 0.1
+  spawnRate: 1
 --- !u!212 &1356273364
 SpriteRenderer:
   m_ObjectHideFlags: 0

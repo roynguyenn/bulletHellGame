@@ -113,7 +113,7 @@ public class SpawnerManager : MonoBehaviour
 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
 
-                animator.SetBool("stage2", true);
+                
 
                 break;
             case 3:
@@ -124,12 +124,10 @@ public class SpawnerManager : MonoBehaviour
                 apple.SetActive(true);
 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
-
-                animator.SetBool("stage3", true);
-                animator.SetBool("stage2", false);
+                animator.SetBool("stage2", true);
                 break;
             case 4:
-                _period -= 2;
+                _period --;
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/HomingEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/EvadingEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/SpreadShooterClose"));
@@ -137,17 +135,21 @@ public class SpawnerManager : MonoBehaviour
                 upgradeShooter();
                 break;
             case 5:
-                _period --;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 3);
 
                 mainShooter.SetActive(false);
                 waveShooter.SetActive(true);
+
+                animator.SetBool("stage3", true);
+                animator.SetBool("stage2", false);
                 break;
         }
     }
 
     public void upgradeShooter(){
         mainShooterScript.firingRate = 0.4f;
+        mainShooterScript.bulletSpeed = 3f;
         mainShooterScript.spreadCount = 10;
 
     }
