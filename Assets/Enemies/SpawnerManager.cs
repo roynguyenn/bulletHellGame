@@ -14,6 +14,7 @@ public class SpawnerManager : MonoBehaviour
     public GameObject apple;
     public GameObject mainShooter;
     public GameObject waveShooter;
+    public playerMechanics mechanics;
     public CircleCollider2D collider;
     public SpawnerScript mainShooterScript;
     private HungerBar _hungerBar;
@@ -129,7 +130,7 @@ public class SpawnerManager : MonoBehaviour
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/HomingEnemy"), 1);
 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
-
+                mechanics.damageTaken += 5;
                 
 
                 break;
@@ -142,6 +143,8 @@ public class SpawnerManager : MonoBehaviour
 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
                 animator.SetBool("stage2", true);
+
+                mechanics.damageTaken += 5;
                 break;
             case 4:
                 _period --;
@@ -149,6 +152,8 @@ public class SpawnerManager : MonoBehaviour
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/EvadingEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/SpreadShooterClose"));
 
+                mechanics.damageTaken += 5;
+                upgradeShooter();
                 break;
             case 5:
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
@@ -159,6 +164,8 @@ public class SpawnerManager : MonoBehaviour
 
                 animator.SetBool("stage3", true);
                 animator.SetBool("stage2", false);
+                
+                mechanics.damageTaken += 5;
                 break;
         }
     }

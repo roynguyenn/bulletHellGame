@@ -17,6 +17,7 @@ public class playerMechanics : MonoBehaviour
     public float gameTimer = 0f;
     public Color blinkColor;
     public Color originalColor;
+    public int damageTaken = 10;
     private Coroutine blinking;
 
     // For speed item
@@ -49,7 +50,7 @@ public class playerMechanics : MonoBehaviour
         {
             combo = 0;
             hungerIncrease = 0;
-            hunger.DecreaseHunger(10);
+            hunger.DecreaseHunger(damageTaken);
             blinking = StartCoroutine(Blink());
             StartCoroutine(stopBlink());
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
@@ -85,7 +86,7 @@ public class playerMechanics : MonoBehaviour
         if(collision.gameObject.tag == "Enemy"){
             combo = 0;
             hungerIncrease = 0;
-            hunger.DecreaseHunger(10);
+            hunger.DecreaseHunger(damageTaken);
             blinking = StartCoroutine(Blink());
             StartCoroutine(stopBlink());
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
