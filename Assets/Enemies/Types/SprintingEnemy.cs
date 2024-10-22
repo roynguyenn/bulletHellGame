@@ -9,7 +9,7 @@ public class SprintingEnemy : Enemy
 
     private Transform _playerTransform;
     private Vector3 _savedPlayerPosition;
-    private float lifeTime = 20f;
+    private float lifeTime = 15f;
     private float timer = 0f;
     private bool _isRushing = false;
 

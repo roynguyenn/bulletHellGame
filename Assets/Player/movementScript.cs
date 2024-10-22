@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class movementScript : MonoBehaviour
@@ -10,7 +9,7 @@ public class movementScript : MonoBehaviour
     public Animator animator;
     public CircleCollider2D mapCollider;
     // Start is called before the first frame update
-    public float movespeed = 3f;
+    public float movespeed = 4f;
     void Start()
     {
         
@@ -46,6 +45,7 @@ public class movementScript : MonoBehaviour
         }
         movementVector.Normalize();
         transform.position += movementVector * movespeed * Time.deltaTime;
+
         boundPosition(mapCollider);
     }
 
@@ -61,4 +61,5 @@ public class movementScript : MonoBehaviour
             transform.position = boundedPos;
         }
     }
+    
 }

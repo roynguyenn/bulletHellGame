@@ -14,6 +14,7 @@ public class SpawnerManager : MonoBehaviour
     public GameObject apple;
     public GameObject mainShooter;
     public GameObject waveShooter;
+    public CircleCollider2D collider;
     public SpawnerScript mainShooterScript;
     private HungerBar _hungerBar;
     private Dictionary<GameObject, double> _enemyPrefabs = new Dictionary<GameObject, double>();
@@ -27,8 +28,8 @@ public class SpawnerManager : MonoBehaviour
     private void LoadEnemyPrefabs()
     {
         _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 1);
-        //_enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"), 1);
-        //_enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicRandomShoot"), 1);
+        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"), 1);
+        
     }
 
     private GameObject PickRandomEnemyPrefab()
@@ -50,8 +51,24 @@ public class SpawnerManager : MonoBehaviour
     private GameObject CreateEnemyInstance(GameObject enemyPrefab)
     {
         Vector3 spawnPosition = GetRandomSpawnPosition(enemyPrefab);
-        GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        return enemyInstance;
+        if (inCircle(collider, spawnPosition)){
+            Debug.Log("true");
+            GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            return enemyInstance;
+        }
+        
+        return null;
+    }
+    private bool inCircle(CircleCollider2D collider, Vector3 position){
+        Vector3 center = (Vector2) collider.transform.position +(collider.offset * collider.transform.localScale.x);
+        float radius = collider.radius * collider.transform.localScale.x;
+
+        Vector3 distance = position - center;
+        if (distance.magnitude <= radius){
+            return true;
+        }
+        return false;
+
     }
 
     private Vector3 GetRandomSpawnPosition(GameObject enemyPrefab)
@@ -113,7 +130,7 @@ public class SpawnerManager : MonoBehaviour
 
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"));
 
-                animator.SetBool("stage2", true);
+                
 
                 break;
             case 3:
@@ -122,28 +139,34 @@ public class SpawnerManager : MonoBehaviour
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
                 mainShooter.SetActive(true);
                 apple.SetActive(true);
-                
-                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
-                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
-                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
 
-                animator.SetBool("stage3", true);
-                animator.SetBool("stage2", false);
+                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
+                animator.SetBool("stage2", true);
                 break;
             case 4:
-                _period -= 2;
+                _period --;
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/HomingEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/EvadingEnemy"));
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/SpreadShooterClose"));
 
                 break;
             case 5:
-                _period --;
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/EvadingEnemy"), 1);
+                _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 3);
 
                 mainShooter.SetActive(false);
                 waveShooter.SetActive(true);
+
+                animator.SetBool("stage3", true);
+                animator.SetBool("stage2", false);
                 break;
         }
+    }
+
+    public void upgradeShooter(){
+        mainShooterScript.firingRate = 0.4f;
+        mainShooterScript.bulletSpeed = 3f;
+        mainShooterScript.spreadCount = 10;
+
     }
 }
