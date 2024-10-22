@@ -32,7 +32,7 @@ public class HungerBar : MonoBehaviour
 
 	public void IncreaseHunger(int amount)
 	{
-		_currentHunger += amount*100;
+		_currentHunger += amount;
 		_currentHunger = Mathf.Clamp(_currentHunger, 0, stages[_currentMaxHungerIndex]);
 		if (_currentHunger == stages[_currentMaxHungerIndex])
 		{

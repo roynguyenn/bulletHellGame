@@ -26,7 +26,6 @@ public class pauseDeathScreen : MonoBehaviour
     public GameObject tutorialButton;
     public GameObject restartButton;
 
-    public GameObject newMainMenu;
     public bool callOnce = false;
     public bool isPaused = false;
 
@@ -46,7 +45,7 @@ public class pauseDeathScreen : MonoBehaviour
         if (!hasWon && hunger.GetComponent<HungerBar>().CurrentHunger == hunger.GetComponent<HungerBar>().stages[4])
         {
             restartButton.SetActive(true);
-            newMainMenu.SetActive(true);
+            
             TriggerWinningScreen();
         }
     }
@@ -98,7 +97,7 @@ public class pauseDeathScreen : MonoBehaviour
         if (!winSCreen.activeSelf)
         {
             restartButton.SetActive(true);
-            newMainMenu.SetActive(true);
+            
             winSCreen.SetActive(true);
             Time.timeScale = 0f; 
             hasWon = true; 
