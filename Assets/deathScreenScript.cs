@@ -16,6 +16,9 @@ public class pauseDeathScreen : MonoBehaviour
     public GameObject pauseButton;
 
     public GameObject continueButton;
+
+    public GameObject deathScreens;
+    public GameObject timer;
     public bool callOnce = false;
     public bool isPaused = false;
     // Start is called before the first frame update
@@ -27,6 +30,7 @@ public class pauseDeathScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
        GameOver();
        callOnceButton();
     }
@@ -36,18 +40,23 @@ public class pauseDeathScreen : MonoBehaviour
             Time.timeScale = 0;
             mainShooter.SetActive(false);
             deathPauseScreenUI.SetActive(true);
-        
+            continueButton.SetActive(false);
+            deathScreens.SetActive(true);
+            pauseButton.SetActive(false); 
+            timer.SetActive(false);
+
         }
 
     }
     public void PauseScreen() {
         
         deathPauseScreenUI.SetActive(true);
+        deathScreens.SetActive(false);
         pauseButton.SetActive(false);
         continueButton.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;    
-        
+        timer.SetActive(false);
     }
     public void callOnceButton() {
         if (!callOnce) {

@@ -1,22 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
 
-public class TutorialPages : MonoBehaviour
+public class NewTutorialPagesMenu : MonoBehaviour
 {
+    // Start is called before the first frame update
     public GameObject[] tutorialPages;
     public GameObject pauseScreen;
     public GameObject backButton;
     public GameObject nextButton;
     public GameObject exitButton;
-    public GameObject deathScreen;
-    public GameObject mainMenu;
-
-    public GameObject inTheGame;
-
 
     public int pageIndex = 0;
     // Start is called before the first frame update
@@ -42,7 +35,6 @@ public class TutorialPages : MonoBehaviour
         pauseScreen.SetActive(false);
         backButton.SetActive(true);
         nextButton.SetActive(true);
-        pageIndex = 0;
         for (int i = 0; i < tutorialPages.Length; i++) {
             if (i ==0) {
                 tutorialPages[i].SetActive(true);
@@ -80,20 +72,12 @@ public class TutorialPages : MonoBehaviour
     public void exitTutorial() {
         for (int i = 0; i < tutorialPages.Length; i++) {
             tutorialPages[i].SetActive(false);
-        }
-        if (mainMenu.activeSelf) {
-            mainMenu.SetActive(true);
-        } else {
-            mainMenu.SetActive(false);
+            
         }
         pauseScreen.SetActive(true);
-        deathScreen.SetActive(false);
         exitButton.SetActive(false);
         backButton.SetActive(false);
         nextButton.SetActive(false);
-        if (mainMenu.activeSelf) {
-            pauseScreen.SetActive(false);
-        }
         Time.timeScale = 1;
     }
 }

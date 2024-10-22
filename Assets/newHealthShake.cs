@@ -7,7 +7,7 @@ public class newHealthShake : MonoBehaviour
     // Start is called before the first frame update
     public HungerBar healthBar;
 
-    public float durationShake = 0.5f;
+    public float durationShake = 0.25f;
     public Vector3 originalLocalPosition;
     public GameObject blackHeart;
     void Start()

@@ -46,13 +46,11 @@ public class movementScript : MonoBehaviour
         }
         movementVector.Normalize();
         transform.position += movementVector * movespeed * Time.deltaTime;
-        Debug.Log(movespeed);
         boundPosition(mapCollider);
     }
 
     public void boundPosition(CircleCollider2D collider){
         Vector3 center = (Vector2) collider.transform.position +(collider.offset * collider.transform.localScale.x);
-        Debug.Log(center);
         float offset = 0f;
         Vector3 direction = gameObject.transform.position - center;
         float distance = direction.magnitude;

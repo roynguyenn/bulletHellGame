@@ -23,7 +23,7 @@ public class HungerBar : MonoBehaviour
 	{
 		
 		_spawnerManager = FindObjectOfType<SpawnerManager>();
-		_currentHunger = 50;
+		_currentHunger = 100;
 		UpdateBars();
 		
 	}

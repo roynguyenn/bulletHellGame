@@ -11,6 +11,9 @@ public class fullScreenTest : MonoBehaviour
     private float hurtDisplayTime = 1.5f;
     private float hurtDisplayFadeOut = 0.5f;
     public HungerBar healthBar;
+
+    private bool isFadingIn = false;
+
     [SerializeField] private Material myMaterial;
     private int screenIntensityProperty = Shader.PropertyToID("_fullscreenIntensity");
     public float fadeCD = 3f;
@@ -26,23 +29,23 @@ public class fullScreenTest : MonoBehaviour
    
     void Update()
     {
-        StartCoroutine(FadeIn());
-        
-        
-    }
-    public IEnumerator FadeIn()
+    if (healthBar.CurrentHunger <= 20f && !isFadingIn)
     {
-        while(healthBar.CurrentHunger <= 20f) {
-            float elapsedTime = 0f;
-            while (elapsedTime < hurtDisplayTime)
-            {
-                elapsedTime += Time.deltaTime;
-                float lerpScreenIntensity = Mathf.Lerp(0.8f, 1f, elapsedTime / hurtDisplayTime);
-                myMaterial.SetFloat(screenIntensityProperty, lerpScreenIntensity);
-                yield return null;  
-            }
-        }
-    
-        
+        StartCoroutine(FadeIn());
     }
+    }
+
+public IEnumerator FadeIn()
+{
+    isFadingIn = true;
+    float elapsedTime = 0f;
+    while (elapsedTime < hurtDisplayTime)
+    {
+        elapsedTime += Time.deltaTime;
+        float lerpScreenIntensity = Mathf.Lerp(0.8f, 1f, elapsedTime / hurtDisplayTime);
+        myMaterial.SetFloat(screenIntensityProperty, lerpScreenIntensity);
+        yield return null;
+    }
+    isFadingIn = false;
+}
 }
