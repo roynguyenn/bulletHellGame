@@ -27,8 +27,8 @@ public class SpawnerManager : MonoBehaviour
     private void LoadEnemyPrefabs()
     {
         _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicEnemy"), 1);
-        //_enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"), 1);
-        //_enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicRandomShoot"), 1);
+        _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/BasicShooterEnemy"), 1);
+        
     }
 
     private GameObject PickRandomEnemyPrefab()
@@ -122,10 +122,8 @@ public class SpawnerManager : MonoBehaviour
                 _enemyPrefabs.Add(Resources.Load<GameObject>("Enemies/SprintingEnemy"), 1);
                 mainShooter.SetActive(true);
                 apple.SetActive(true);
-                
-                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
+
                 _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicEnemy"));
-                _enemyPrefabs.Remove(Resources.Load<GameObject>("Enemies/BasicRandomShoot"));
 
                 animator.SetBool("stage3", true);
                 animator.SetBool("stage2", false);

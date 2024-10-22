@@ -58,7 +58,7 @@ public class playerMechanics : MonoBehaviour
                 hungerIncrease += 1;
             }
 
-            if (item.itemtype == ItemScript.ItemTypes.Shrimp){
+            if (item.itemtype == ItemScript.ItemTypes.Ramen){
                 speedBoost(1);
                 Invoke("cancelSpeedBoost", 5f);
             }

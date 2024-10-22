@@ -52,7 +52,12 @@ public class SpawnerScript : MonoBehaviour
 
         if (spawnerType == SpawnerTypes.Aim)
         {
-            Aim(player);
+            
+            if (shootTimer >= firingRate && inRange(player))
+            {
+                Fire(Aim(player));
+                shootTimer = 0f;
+            }
         }
         else if(spawnerType == SpawnerTypes.Spread)
         {
@@ -63,24 +68,20 @@ public class SpawnerScript : MonoBehaviour
             }
         }
         
-        
-
-        if (shootTimer >= firingRate && inRange(player))
-        {
-            Fire();
-            shootTimer = 0f;
-        }
     }
 
-    public void Fire()
+    public void Fire(Vector3 direction)
     {
         spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
         spawnedBullet.GetComponent<BulletScript>().movespeed = bulletSpeed;
         spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
-        spawnedBullet.GetComponent<BulletScript>().bulletDirection = transform.right;
+        spawnedBullet.GetComponent<BulletScript>().bulletDirection = direction;
         spawnedBullet.GetComponent<BulletScript>().player = player;
-        spawnedBullet.transform.rotation = transform.rotation;
-        spawnedBullet.transform.Rotate(0,0,-90f);
+        // spawnedBullet.transform.rotation = transform.rotation;
+        // spawnedBullet.transform.Rotate(0,0,-90f);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float offset = -90f;
+        spawnedBullet.transform.rotation = Quaternion.Euler(0, 0, angle + offset);
     }
 
     public void SpreadShot(int shotCount)
@@ -109,12 +110,13 @@ public class SpawnerScript : MonoBehaviour
     
     }
 
-    public void Aim(GameObject target)
+    public Vector3 Aim(GameObject target)
     {
         Vector3 targetDirection = transform.position - target.transform.position;
-        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        float offset = 180f;
-        transform.rotation = Quaternion.Euler(0, 0, angle + offset);
+        // float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        // float offset = 180f;
+        // transform.rotation = Quaternion.Euler(0, 0, angle + offset);
+        return -targetDirection.normalized;
     }
 
     public bool inRange(GameObject player){

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
-    public enum ItemTypes{Shrimp, Burger, Tiramisu}
+    public enum ItemTypes{Nuggets, Ranch, Ramen, Tiramisu}
     public ItemTypes itemtype;
     public GameObject player;
     public float lifeTime;
