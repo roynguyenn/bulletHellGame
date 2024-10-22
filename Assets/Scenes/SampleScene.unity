@@ -988,7 +988,7 @@ MonoBehaviour:
   apple: {fileID: 1117613982}
   mainShooter: {fileID: 576298084}
   waveShooter: {fileID: 81746167}
-  mechanics: {fileID: 0}
+  mechanics: {fileID: 1258510767}
   collider: {fileID: 1822128446}
   mainShooterScript: {fileID: 576298085}
 --- !u!1 &123730285
@@ -2088,7 +2088,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletLife: 8
   bulletSpeed: 5
-  firingRate: 0.2
+  firingRate: 1
   rotationSpeed: 0.3
   lifeTime: 99999
   rotate: 1
