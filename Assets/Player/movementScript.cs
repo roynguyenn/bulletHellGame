@@ -10,7 +10,7 @@ public class movementScript : MonoBehaviour
     public Animator animator;
     public CircleCollider2D mapCollider;
     // Start is called before the first frame update
-    public float movespeed = 3f;
+    public float movespeed = 4f;
     void Start()
     {
         
@@ -46,7 +46,7 @@ public class movementScript : MonoBehaviour
         }
         movementVector.Normalize();
         transform.position += movementVector * movespeed * Time.deltaTime;
-        Debug.Log(movespeed);
+
         boundPosition(mapCollider);
     }
 

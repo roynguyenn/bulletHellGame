@@ -68,6 +68,10 @@ public class playerMechanics : MonoBehaviour
                 Invoke("cancelInvulnerability", itemInvulDuration);
             }
 
+            if(item.itemtype == ItemScript.ItemTypes.Shrimp){
+                clearEnemies();
+            }
+
             hunger.IncreaseHunger(item.hungerVal + hungerIncrease);
             
         }

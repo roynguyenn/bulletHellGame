@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93436ff9e1a834ec499aaf18991adbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemtype: 2
+  itemtype: 3
   player: {fileID: 0}
-  lifeTime: 15
+  lifeTime: 60
   hungerVal: 50
 --- !u!61 &-7374683164734960344
 BoxCollider2D:

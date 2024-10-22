@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: -930764039
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 598981879, guid: 777ed9f3ee3664c08bfe40942336159b, type: 3}
+  m_Color: {r: 0.31626022, g: 0.58168554, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bulletLife: 5
   bulletSpeed: 5
-  firingRate: 1
+  firingRate: 2
   rotationSpeed: 0
   lifeTime: 15
   rotate: 0
